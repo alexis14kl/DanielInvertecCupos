@@ -8,6 +8,7 @@ import { CommonModule } from '@angular/common';
 import { OnInit, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { InstallPwaButtonComponent } from '../install-pwa-button/install-pwa-button.component';
 
 import {
   ContainerComponent,
@@ -32,30 +33,52 @@ import {
     DropdownDividerDirective,
     DropdownItemDirective,
     DropdownMenuDirective,
-    DropdownToggleDirective,
+    DropdownToggleDirective, InstallPwaButtonComponent
   ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css'
 })
-export class HeaderComponent  implements OnInit, OnDestroy{
+export class HeaderComponent implements OnInit, OnDestroy {
   visible: boolean = false;
 
   @ViewChild('drawer') drawer: any;
 
-// scrollToSection(id: string) {
-//   const element = document.getElementById(id);
-//   if (element) {
-//     element.scrollIntoView({ behavior: 'smooth' });
-//     this.visible = false; // cierra el drawer
-//   }
-// }
+  // scrollToSection(id: string) {
+  //   const element = document.getElementById(id);
+  //   if (element) {
+  //     element.scrollIntoView({ behavior: 'smooth' });
+  //     this.visible = false; // cierra el drawer
+  //   }
+  // }
 
 
-private fragmentSubscription: Subscription | undefined;
+  private fragmentSubscription: Subscription | undefined;
 
-  constructor(private router: Router, private route: ActivatedRoute) {}
+  constructor(private router: Router, private route: ActivatedRoute) { }
+  isStandalone = false;
+
+
+  deferredPrompt: any = null;
+  showInstallButton: boolean = false;
+
 
   ngOnInit() {
+    this.isStandalone =
+      window.matchMedia('(display-mode: standalone)').matches ||
+      (navigator as any).standalone === true;
+
+    const storedPrompt = localStorage.getItem('canPromptPWA');
+
+    if (storedPrompt === 'true') {
+      this.showInstallButton = true;
+    }
+
+    window.addEventListener('beforeinstallprompt', (event: Event) => {
+      event.preventDefault();
+      this.deferredPrompt = event;
+      this.showInstallButton = true;
+      localStorage.setItem('canPromptPWA', 'true');
+    });
     this.fragmentSubscription = this.route.fragment.subscribe(fragment => {
       if (fragment) {
         this.scrollToSection(fragment);
@@ -75,4 +98,5 @@ private fragmentSubscription: Subscription | undefined;
       window.scrollTo({ top: element.offsetTop - 100, behavior: 'smooth' });
     }
   }
+
 }

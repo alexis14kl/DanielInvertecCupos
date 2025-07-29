@@ -109,8 +109,17 @@
             <a routerLink="/index/contacto" rel="noopener noreferrer" class="transition-all duration-300 hover:translate-x-1 hover:text-blue-600" (click)="visible = true">Iniciar
         Solicitud</a>
         </li>
+
+        <!-- En tu header.component.html -->
+        <li *ngIf="showInstallButton && !isStandalone" class="p-4 border-b transition-all duration-300 hover:bg-gray-100 hover:translate-x-1 cursor-pointer">
+            <app-install-pwa-button [deferredPrompt]="deferredPrompt"></app-install-pwa-button>
+        </li>
+
+
+
     </ul>
 </p-drawer>
+
 
 
 <!-- SUBHEADER (debajo del header) -->

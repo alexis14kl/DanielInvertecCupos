@@ -1,0 +1,51 @@
+.install-banner {
+    background-color: #1c1f26;
+    color: white;
+    text-align: center;
+    font-family: sans-serif;
+    overflow: hidden;
+    border-radius: 0.5rem;
+    position: relative;
+    padding: 1rem;
+}
+
+.install-banner button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+
+/* Cinta tipo ribbon */
+
+.ribbon {
+    width: 180px;
+    height: 180px;
+    overflow: hidden;
+    position: absolute;
+    top: -20px;
+    right: -20px;
+    z-index: 10;
+}
+
+.ribbon span {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 220px;
+    height: 40px;
+    background-color: red;
+    color: white;
+    font-weight: bold;
+    transform: rotate(45deg);
+    top: 23px;
+    top: 24px;
+    right: -67px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    letter-spacing: 1px;
+}

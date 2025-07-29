@@ -1,4 +1,4 @@
-import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
+import { ApplicationConfig, provideZoneChangeDetection, isDevMode } from '@angular/core';
 import { provideRouter } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -10,6 +10,7 @@ import Aura from '@primeng/themes/aura';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common'; //rutas temporales para servidores apaches
 
 import { withInMemoryScrolling } from '@angular/router';
+import { provideServiceWorker } from '@angular/service-worker';
 
 
 export const appConfig: ApplicationConfig = {
@@ -30,7 +31,11 @@ export const appConfig: ApplicationConfig = {
             darkModeSelector: '.my-app-dark'
         }
       }
-  })
+  }),
+  provideServiceWorker('ngsw-worker.js', {
+    enabled: !isDevMode(),
+    registrationStrategy: 'registerImmediately'
+  })  
 ]
 
 };
