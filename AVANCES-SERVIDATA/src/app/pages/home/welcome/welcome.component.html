@@ -1,0 +1,400 @@
+<app-header></app-header>
+<div class="h-[2rem]"></div>
+<br>
+<div pAnimateOnScroll enterClass="animate-enter fade-in-10 slide-in-from-t-20 animate-duration-1000">
+    <c-carousel [dark]="true" [wrap]="false" [interval]="3000">
+        <!-- Indicadores de carrusel -->
+        <c-carousel-indicators></c-carousel-indicators>
+
+        <!-- Contenido del carrusel -->
+        <c-carousel-inner>
+            <c-carousel-item *ngFor="let slide of slides; let i = index" [active]="i === currentIndex">
+                <!-- Contenedor de cada slide -->
+                <div class="relative flex flex-col md:flex-row w-full h-auto md:h-96 overflow-hidden rounded-xl shadow-2xl group">
+
+                    <!-- Descripción sin fondo azul, similar al ejemplo de PrimeNG -->
+                    <div class="p-6 md:p-8 flex-1 text-[#2240B1] bg-white flex flex-col justify-center">
+                        <h2 class="responsive-title text-center text-2xl sm:text-3xl md:text-4xl font-bold mb-2 drop-shadow-lg animate-fade-in" style="text-transform: uppercase;">
+                            {{ slide.title }}
+                        </h2>
+                        <p class="responsive-subtitle text-center mb-6 text-base sm:text-lg md:text-xl opacity-90 drop-shadow-md animate-fade-in-delay">
+                            {{ slide.subtitle }}
+                        </p>
+
+                        <!-- Botón centrado -->
+                        <a routerLink="/index/contacto" class="modern-btn inline-block mx-auto">
+                            <!-- Añadido mx-auto -->
+                            <span class="btn-text">Solicitar YA</span>
+                            <span class="btn-icon">
+              <i class="pi pi-arrow-right"></i>
+            </span>
+                        </a>
+                    </div>
+
+                    <!-- Imagen -->
+                    <!-- Imagen -->
+                    <div class="flex items-center justify-center bg-white p-4 md:p-6 h-[28rem] md:h-[32rem]">
+                        <img loading="lazy" [src]="slide.src" [alt]="slide.title" class="max-h-full max-w-full object-contain transition-transform duration-500" />
+                    </div>
+
+
+
+
+                </div>
+            </c-carousel-item>
+        </c-carousel-inner>
+
+        <!-- Controles de navegación -->
+        <c-carousel-control [routerLink] caption="Previous" direction="prev" class="text-white hover:bg-gray-700 rounded-full p-2 bg-opacity-50" />
+        <c-carousel-control [routerLink] caption="Next" direction="next" class="text-white hover:bg-gray-700 rounded-full p-2 bg-opacity-50" />
+    </c-carousel>
+</div>
+
+
+<!-- contenido del app -->
+
+<!-- seccion Soluciones -->
+<section class="py-16 px-4 bg-gradient-to-b from-blue-50 to-white">
+    <div class="max-w-7xl mx-auto">
+        <!-- Encabezado con icono integrado -->
+        <div class="text-center mb-12">
+            <div class="flex justify-center mb-4">
+                <svg width="60" height="60" viewBox="0 0 60 60" class="text-[#2240b1]">
+          <rect x="10" y="10" width="40" height="40" rx="8" fill="currentColor" opacity="0.1"/>
+          <rect x="18" y="30" width="6" height="20" rx="1" fill="currentColor" opacity="0.8"/>
+          <rect x="28" y="20" width="6" height="30" rx="1" fill="currentColor"/>
+          <rect x="38" y="10" width="6" height="40" rx="1" fill="currentColor" opacity="0.8"/>
+        </svg>
+            </div>
+            <h2 style="color: #2240b1;font: bold;font-weight: 800;" class="text-3xl md:text-4xl font-bold text-[#2240b1] uppercase tracking-tight mb-3">
+                🚀 Nuestras Soluciones Financieras
+            </h2>
+            <p style="font-size: 10pt; color: #2240b1;font: bold;font-weight: 800" class="text-lg text-gray-600 max-w-3xl mx-auto">
+                Servicios diseñados para ofrecerte liquidez inmediata y consultas crediticias confiables
+            </p>
+        </div>
+
+        <!-- Grid de soluciones - Contenedor ajustado -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 justify-items-center">
+
+            <!-- Solución 1 -->
+            <div class="bg-white rounded-xl shadow-sm hover:shadow-md transition-all duration-300 border border-gray-100 overflow-hidden hover:border-[#2240b1]/20 w-full max-w-md">
+                <div class="p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="w-10 h-10 rounded-lg bg-[#2240b1]/10 flex items-center justify-center mr-3">
+                            <svg class="w-5 h-5 text-[#2240b1]" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M5 5a3 3 0 015-2.236A3 3 0 0114.83 6H16a2 2 0 110 4h-5V7a1 1 0 10-2 0v3H4a2 2 0 110-4h1.17C5.06 5.687 5 5.35 5 5zm4 1V5a1 1 0 10-1 1h1zm3 0a1 1 0 10-1-1v1h1z" clip-rule="evenodd"/>
+                      <path d="M9 11H3v5a2 2 0 002 2h4v-7zM11 18h4a2 2 0 002-2v-5h-6v7z"/>
+                    </svg>
+                        </div>
+                        <h3 style="color: #2240b1;font: bold;font-weight: 800;" class="text-xl font-semibold text-[#2240b1] uppercase">Addi</h3>
+                    </div>
+                    <p class="text-gray-600 mb-4">
+                        Cupos disponibles y preaprobados en efectivo y productos tecnologicos con disponibilidad inmediata y sin trámites complicados.
+                    </p>
+                    <div class="bg-blue-50 rounded-lg p-3 mb-3">
+                        <p style="font-size: 13pt;" class="text-xs font-medium text-gray-600">
+                            <span style="color: #2240b1;font: bold;font-weight: 800;" class="font-semibold text-[#2240b1]">Cupo minimo:</span> desde 300.000 cop y preaprobados hasta 3.000.000 cop
+                        </p>
+                    </div>
+                    <ul class="space-y-2 text-sm text-gray-500">
+                        <li class="flex items-start">
+                            <svg class="w-4 h-4 text-[#00d0ff] mt-0.5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                    </svg>
+                            <span>Aprobación en minutos</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-4 h-4 text-[#00d0ff] mt-0.5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                    </svg>
+                            <span>Entrega inmediata</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-4 h-4 text-[#00d0ff] mt-0.5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                    </svg>
+                            <span>transferencia nequi daviplata</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-4 h-4 text-[#00d0ff] mt-0.5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                    </svg>
+                            <span>presencial o virtual</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Solución 1 -->
+            <div class="bg-white rounded-xl shadow-sm hover:shadow-md transition-all duration-300 border border-gray-100 overflow-hidden hover:border-[#2240b1]/20 w-full max-w-md">
+                <div class="p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="w-10 h-10 rounded-lg bg-[#2240b1]/10 flex items-center justify-center mr-3">
+                            <svg class="w-5 h-5 text-[#2240b1]" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10z"/>
+              </svg>
+                        </div>
+                        <h3 style="color: #2240b1;font: bold;font-weight: 800;" class="text-xl font-bold text-red-500 uppercase text-[#2240b1]">Sistecrédito</h3>
+                    </div>
+                    <p class="text-gray-600 mb-4">
+                        Cupos en efectivo y productos de tecnología con aprobación rápida y proceso <span style="color: red;">100%</span> seguro.
+                    </p>
+                    <ul class="space-y-2 text-sm text-gray-500">
+                        <li class="flex items-start">
+                            <svg class="w-4 h-4 text-[#00d0ff] mt-0.5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+              </svg>
+                            <span>Aprobación en minutos</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-4 h-4 text-[#00d0ff] mt-0.5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+              </svg>
+                            <span>Entrega inmediata</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-4 h-4 text-[#00d0ff] mt-0.5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+              </svg>
+                            <span>transferencia nequi daviplata</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-4 h-4 text-[#00d0ff] mt-0.5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+              </svg>
+                            <span>presencial o virtual</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Solución 2 -->
+            <div class="bg-white rounded-xl shadow-sm hover:shadow-md transition-all duration-300 border border-gray-100 overflow-hidden hover:border-[#2240b1]/20 w-full max-w-md">
+                <div class="p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="w-10 h-10 rounded-lg bg-[#2240b1]/10 flex items-center justify-center mr-3">
+                            <svg class="w-5 h-5 text-[#2240b1]" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z"/>
+              </svg>
+                        </div>
+                        <h3 style="color: #2240b1;font: bold;font-weight: 800;" class="text-xl font-semibold text-[#2240b1] uppercase">Consultas en DataCrédito y CIFIN</h3>
+                    </div>
+                    <p class="text-gray-600 mb-4">
+                        Historial crediticio, sintesis, reconocer+, completo y personas juridicas, linea economica y experian.
+                    </p>
+                    <div class="bg-blue-50 rounded-lg p-3">
+                        <p style="font-size: 13pt;" class="text-xs font-medium text-gray-600">
+                            <span style="color: #2240b1;font: bold;font-weight: 800;" class="font-semibold text-[#2240b1]">Desde $16.000 COP</span> según tipo de consulta
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<!-- Sección de Servicios -->
+<section id="servicios" class="py-20 bg-gradient-to-b from-white to-gray-50">
+    <div class="container mx-auto px-4 max-w-7xl">
+        <!-- Encabezado -->
+        <div class="text-center mb-16">
+            <span style="font-size: 15pt;color: #2240b1;font: bold;font-weight: 800;" class="inline-block mb-4 text-[#2240b1] bg-[#2240b1]/10 px-3 py-1 rounded-full text-sm font-semibold uppercase tracking-wider">
+        Soluciones Integrales
+      </span>
+            <h2 style="color: #2240b1;font: bold;font-weight: 800;" class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                Nuestros Servicios Financieros
+            </h2>
+            <p style="font-size: 15pt;color: #2240b1;font: bold;font-weight: 800;" class="text-lg text-gray-600 max-w-2xl mx-auto">
+                Ofrecemos las mejores alternativas para gestionar tu crédito y capital de trabajo
+            </p>
+        </div>
+
+        <!-- Grid de Servicios -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div *ngFor="let service of services" class="group">
+                <div class="h-full bg-white rounded-xl shadow-lg overflow-hidden border border-gray-100 hover:border-[#2240b1]/30 transition-all duration-300 hover:-translate-y-2 flex flex-col">
+                    <!-- Contenedor de imagen -->
+                    <div class="relative h-64 sm:h-72 md:pt-[60%] overflow-hidden bg-gray-50">
+                        <img [src]="service.image" [alt]="service.title" class="absolute top-0 left-0 w-full h-full object-contain p-2 md:p-4 transition-transform duration-500 group-hover:scale-105">
+                    </div>
+
+                    <!-- Contenido - Todos los textos centrados -->
+                    <div class="p-5 md:p-6 flex flex-col flex-grow text-center">
+                        <!-- text-center añadido aquí -->
+                        <div class="flex items-center justify-center mb-3 md:mb-4">
+                            <!-- justify-center añadido -->
+                            <h3 style="color: #2240b1; font-weight: 800;" class="text-lg md:text-xl font-bold uppercase">
+                                {{service.title}}
+                            </h3>
+                        </div>
+
+                        <p class="text-gray-600 mb-4 md:mb-6 flex-grow text-sm md:text-base px-2">
+                            <!-- px-2 para padding lateral -->
+                            {{service.description}}
+                        </p>
+
+                        <div class="mt-auto">
+                            <a style="text-decoration: none;" target="_blank" href="https://api.whatsapp.com/send/?phone=573103248752&text=Hola%2C+quiero+hacer+una+consulta&type=phone_number&app_absent=0" class="inline-block bg-[#00d0ff] hover:bg-[#00bce5] text-white px-5 py-2 md:px-6 md:py-2 rounded-full text-sm font-semibold shadow-md hover:shadow-lg transition-all duration-300">
+                Solicitar ahora
+              </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CTA adicional -->
+        <div class="mt-16 text-center">
+            <div class="bg-[#2240b1]/5 p-8 rounded-xl">
+                <h3 style="color: #2240b1;font: bold;font-weight: 800;" class="text-2xl font-bold text-gray-900 mb-3">¿Necesitas asesoría personalizada?</h3>
+                <p style="color: #2240b1;font: bold;font-weight: 800;" class="text-gray-600 mb-6 max-w-2xl mx-auto">
+                    Nuestros especialistas están disponibles para resolver todas tus dudas sobre productos y servicios financieros.
+                </p>
+
+                <!-- Botones de WhatsApp -->
+                <div class="flex flex-col md:flex-row justify-center items-center gap-4">
+
+                    <!-- Botón 1 -->
+                    <a href="https://api.whatsapp.com/send?phone=573103248752" target="_blank" class="inline-flex items-center px-8 py-3 bg-[#2240b1] text-white rounded-lg font-bold hover:bg-[#1a3495] transition-colors duration-300 shadow-lg hover:shadow-xl">
+                        <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M17.472 14.382c... [recortado por brevedad] ..."></path>
+            </svg> Escribir al WhatsApp 310 324 8752
+                    </a>
+
+                    <!-- Botón 2 -->
+                    <a href="https://api.whatsapp.com/send?phone=573143020480" target="_blank" class="inline-flex items-center px-8 py-3 bg-[#2240b1] text-white rounded-lg font-bold hover:bg-[#1a3495] transition-colors duration-300 shadow-lg hover:shadow-xl">
+                        <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M17.472 14.382c... [recortado por brevedad] ..."></path>
+            </svg> Escribir al WhatsApp 314 302 0480
+                    </a>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
+<section class="bg-white py-20 px-4">
+    <!-- Título -->
+    <h2 style="color: #2240b1;font: bold;font-weight: 800;" class="text-4xl md:text-5xl font-extrabold text-center uppercase tracking-wide text-[#2240b1] mb-12">
+        🎥 Conoce Nuestros Servicios
+    </h2>
+
+    <!-- Grid de videos estilo Facebook -->
+    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 px-4">
+
+        <!-- Video -->
+        <div class="w-full aspect-[3/4] bg-black rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 overflow-hidden">
+            <video class="w-full h-full object-cover rounded-2xl" controls preload="metadata">
+      <source src="assets/videos/home/Services/videoService00.mp4" type="video/mp4">
+      Tu navegador no soporta la reproducción de video.
+    </video>
+        </div>
+
+        <!-- Video -->
+        <div class="w-full aspect-[3/4] bg-black rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 overflow-hidden">
+            <video class="w-full h-full object-cover rounded-2xl" controls preload="metadata">
+      <source src="assets/videos/home/Services/videoService01.mp4" type="video/mp4">
+      Tu navegador no soporta la reproducción de video.
+    </video>
+        </div>
+
+        <!-- Video -->
+        <div class="w-full aspect-[3/4] bg-black rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 overflow-hidden">
+            <video class="w-full h-full object-cover rounded-2xl" controls preload="metadata">
+      <source src="assets/videos/home/Services/videoService02.mp4" type="video/mp4">
+      Tu navegador no soporta la reproducción de video.
+    </video>
+        </div>
+
+        <!-- Video -->
+        <div class="w-full aspect-[3/4] bg-black rounded-2xl shadow-lg hover:shadow-2xl transition-shadow duration-300 overflow-hidden">
+            <video class="w-full h-full object-cover rounded-2xl" controls preload="metadata">
+      <source src="assets/videos/home/Services/videoService03.mp4" type="video/mp4">
+      Tu navegador no soporta la reproducción de video.
+    </video>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- Sobre nosotros -->
+<section id="nosotros" class="bg-gradient-to-r from-white via-blue-50 to-white py-20 px-6">
+    <div class="max-w-6xl mx-auto text-center">
+
+        <!-- Título principal -->
+        <h2 style="color: #2240b1;font: bold;font-weight: 800;" class="text-4xl md:text-5xl font-extrabold tracking-wide text-[#2240b1] uppercase mb-10">
+            👥 Nosotros
+        </h2>
+
+        <!-- Descripción -->
+        <div class="text-lg text-gray-700 leading-relaxed mb-16 max-w-4xl mx-auto">
+            <p>
+                En <strong class="text-[#2240b1] font-semibold">INVERTECCUPOS</strong> nos especializamos en ofrecer soluciones financieras accesibles y seguras. Nuestra misión es ayudarte a transformar tus cupos en efectivo o productos sin complicaciones.
+            </p>
+            <p class="mt-4">
+                Trabajamos con aliados de confianza como <strong class="text-[#2240b1]">Addi</strong> y <strong class="text-[#2240b1]">Sistecrédito</strong> para brindarte la mejor experiencia.
+            </p>
+            <p class="mt-4 text-green-700 font-semibold">
+                🎯 A nuestros clientes más fieles les ofrecemos un <strong>cupo rotativo adicional de hasta $1.000.000</strong>, pagadero en <strong>2 quincenas</strong>.
+            </p>
+        </div>
+
+        <!-- Cards -->
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+
+            <!-- Card -->
+            <div class="bg-white p-6 rounded-2xl shadow-md hover:shadow-xl transition duration-300 border border-gray-100 text-left">
+                <h3 style="color: #2240b1;font: bold;font-weight: 800;" class="text-xl font-semibold text-[#2240b1] uppercase mb-4">01. Misión</h3>
+                <p class="text-gray-700 leading-relaxed">
+                    Brindar soluciones rápidas y confiables de financiamiento, facilitando el acceso a efectivo y productos a nuestros clientes de forma ágil y segura, productos celulares y tecnologia con aliados comerciales ADDI, SISTECREDITO, VANTI, SU+ PAY y EXPERIAN.
+                </p>
+            </div>
+
+            <!-- Card -->
+            <div class="bg-white p-6 rounded-2xl shadow-md hover:shadow-xl transition duration-300 border border-gray-100 text-left">
+                <h3 style="color: #2240b1;font: bold;font-weight: 800;" class="text-xl font-semibold text-[#2240b1] uppercase mb-4">02. Visión</h3>
+                <p class="text-gray-700 leading-relaxed">
+                    Ser reconocidos como líderes en el canje de cupos en Colombia, ofreciendo servicios rápidos y personalizados, conectando a clientes y entidades financieras.
+                </p>
+            </div>
+
+            <!-- Card -->
+            <div class="bg-white p-6 rounded-2xl shadow-md hover:shadow-xl transition duration-300 border border-gray-100 text-left">
+                <h3 style="color: #2240b1;font: bold;font-weight: 800;" class="text-xl font-semibold text-[#2240b1] uppercase mb-4">03. Valores</h3>
+                <ul class="list-disc list-inside space-y-2 text-gray-700">
+                    <li><strong>Confianza:</strong> Procesos transparentes y seguros.</li>
+                    <li><strong>Agilidad:</strong> Canjes rápidos y sencillos <span style="color: red;">100%</span> seguro.</li>
+                    <li><strong>Accesibilidad:</strong> Soluciones para todos.</li>
+                    <li><strong>Compromiso:</strong> Atención cercana y humana presencial y virtual.</li>
+
+                </ul>
+            </div>
+
+            <!-- Card -->
+            <div class="bg-white p-6 rounded-2xl shadow-md hover:shadow-xl transition duration-300 border border-gray-100 text-left">
+                <h3 style="color: #2240b1;font: bold;font-weight: 800;" class="text-xl font-semibold text-[#2240b1] uppercase mb-4">04. Nuestro Grupo</h3>
+                <p class="text-gray-700 leading-relaxed">
+                    Formamos parte de un grupo de inversionistas que, junto con <strong>Sistecrédito, Addi, </strong> <strong>Vanti y Su+ pay</strong>, permite acceder a cupos adicionales exclusivos.
+                </p>
+            </div>
+
+            <!-- Card -->
+            <div class="bg-white p-6 rounded-2xl shadow-md hover:shadow-xl transition duration-300 border border-gray-100 text-left">
+                <h3 style="color: #2240b1;font: bold;font-weight: 800;" class="text-xl font-semibold text-[#2240b1] uppercase mb-4">05. Nuestro Propósito</h3>
+                <p class="text-gray-700 leading-relaxed">
+                    Transformar tus cupos disponibles en nuevas oportunidades: ya sea en efectivo o productos con un respaldo financiero para avanzar en tus proyectos personales o de negocio.
+                </p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<app-footer></app-footer>

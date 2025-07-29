@@ -1,0 +1,151 @@
+<app-header></app-header>
+<br>
+<br>
+<br>
+<div class="max-w-4xl mx-auto bg-white rounded-xl shadow-lg overflow-hidden flex flex-col md:flex-row">
+    <!-- Formulario -->
+    <div class="w-full md:w-1/2 p-8 space-y-6">
+      <h2 style="color: #2240b1;font: bold;font-weight: 800;" class="text-2xl font-bold text-gray-800 text-center md:text-left">Simulador de Crédito</h2>
+      <!-- <p class="text-sm text-gray-500 text-center md:text-left">Tasa de interés: {{resultado.tasaInteres}}% mensual</p> -->
+  
+      <!-- Valor solicitado -->
+      <!-- <div>
+        <label class="block text-gray-700 font-semibold mb-1" for="valor">Valor solicitado (COP)</label>
+        <input id="valor" type="number" [(ngModel)]="valorSolicitado" placeholder="Ej: 1.000.000"
+               class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+               min="100000" step="50000">
+      </div> -->
+
+      <input id="valor" type="text"
+       [value]="formatearInput(valorSolicitado)"
+       (input)="actualizarValorSolicitado($event)"
+       placeholder="Ej: $1.000.000"
+       class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+
+  
+      <!-- Número de cuotas -->
+      <div>
+        <label class="block text-gray-700 font-semibold mb-1" for="cuotas">Número de cuotas</label>
+        <select id="cuotas" [(ngModel)]="cuotas"
+                class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+          <option value="1">1 cuota</option>
+          <option value="2">2 cuotas</option>
+          <option value="3">3 cuotas</option>
+          <option value="4">4 cuotas</option>
+          <option value="5">5 cuotas</option>
+          <option value="6">6 cuotas</option>
+
+          <option value="7">7 cuotas</option>
+          <option value="8">8 cuotas</option>
+        </select>
+      </div>
+  
+      <!-- Plazo -->
+      <div>
+        <label class="block text-gray-700 font-semibold mb-1" for="plazo">Periodicidad de pagos</label>
+        <select id="plazo" [(ngModel)]="plazo"
+                class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+          <option value="Mensual">Mensual</option>
+          <option value="Quincenal">Quincenal</option>
+          <option value="Semanal">Semanal</option>
+        </select>
+      </div>
+  
+      <!-- Botones -->
+      <div class="flex space-x-4">
+        <button style="background: rebeccapurple;" (click)="calcularCredito()"
+          [disabled]="loading"
+          class="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg transition-colors disabled:bg-blue-400 disabled:cursor-not-allowed">
+          <span *ngIf="!loading">Simular Crédito</span>
+          <span *ngIf="loading">Calculando...</span>
+        </button>
+        
+        <button (click)="resetearSimulador()"
+          class="flex-1 bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-2 px-4 rounded-lg transition-colors">
+          Reiniciar
+        </button>
+      </div>
+  
+      <!-- Resultados -->
+      <div *ngIf="resultadoVisible">
+  <!-- Mostrar resultados generales -->
+  <div style="text-align: right;">
+    <h2 class="text-xl font-bold mb-4">Resultados del Crédito</h2>
+  <p><strong>Valor de la mensual:</strong>
+    {{ formatearNumero(resultado.totalCredito / cuotas) }}
+  </p>
+  <!-- <p><strong>Valor de la cuota:</strong> {{ formatearNumero(resultado.valorCuota) }}</p> -->
+  <p><strong>Total intereses   :</strong> {{ formatearNumero(resultado.totalIntereses) }}</p>
+  <p><strong>Total aval + IVA  :</strong> {{ formatearNumero(resultado.totalAval) }}</p>
+  <p><strong>Total a pagar     :</strong> {{ formatearNumero(resultado.totalCredito) }}</p>
+  </div>
+
+  <!-- Tabla de amortización -->
+  <h3 class="text-lg font-semibold mt-6 mb-2">Tabla de Amortización</h3>
+  <div class="overflow-x-auto">
+    <!-- <table class="min-w-full bg-white shadow rounded-lg">
+      <thead class="bg-gray-200 text-gray-700">
+        <tr>
+          <th class="px-4 py-2 text-left">Cuota #</th>
+          <th class="px-4 py-2 text-left">Cuota</th>
+          <th class="px-4 py-2 text-left">Capital</th>
+          <th class="px-4 py-2 text-left">Interés</th>
+          <th class="px-4 py-2 text-left">Saldo</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let cuota of resultado.tablaAmortizacion">
+          <td class="border-t px-4 py-2">{{ cuota.periodo }}</td>
+          <td class="border-t px-4 py-2">{{ formatearNumero(cuota.cuota) }}</td>
+          <td class="border-t px-4 py-2">{{ formatearNumero(cuota.capital) }}</td>
+          <td class="border-t px-4 py-2">{{ formatearNumero(cuota.interes) }}</td>
+          <td class="border-t px-4 py-2">{{ formatearNumero(cuota.saldo) }}</td>
+        </tr>
+      </tbody>
+    </table> -->
+
+    <!-- Información adicional: Promedio de cuotas -->
+<!-- <div class="mt-6 bg-blue-50 p-4 rounded-lg shadow text-blue-800">
+  <h4 class="font-semibold text-base mb-2">Información adicional s</h4>
+  <p><strong>Promedio simple (Total crédito / Cuotas):</strong>
+    {{ formatearNumero(resultado.totalCredito / cuotas) }}
+  </p>
+</div> -->
+<!-- Tabla de cuotas promedio ajustadas -->
+<div class="mt-4 bg-white border border-gray-200 rounded-lg shadow" *ngIf="cuotasPromedioAjustadas.length > 0">
+  <h4 class="bg-gray-100 px-4 py-2 font-semibold text-gray-800 rounded-t-lg">Cuotas Promedio Ajustadas</h4>
+  <table class="min-w-full text-sm text-gray-700">
+    <thead>
+      <tr class="border-b bg-gray-50">
+        <th class="px-4 py-2 text-left">Cuota #</th>
+        <th class="px-4 py-2 text-left">Valor</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let valor of cuotasPromedioAjustadas; let i = index" class="border-t">
+        <td class="px-4 py-2">Cuota {{ i + 1 }}</td>
+        <td class="px-4 py-2">{{ formatearNumero(valor) }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+  </div>
+</div>
+
+    </div>
+
+    <div class="w-full md:w-1/2 bg-gray-100 flex items-center justify-center p-8 relative">
+      <!-- Título centrado arriba -->
+      <h2 style="color: #2240b1;font: bold;font-weight: 800;background: #2240b1;"  class="absolute top-4 text-3xl font-bold text-center text-white bg-black/50 px-4 py-2 rounded-lg shadow-lg z-10">
+        INVERTECCUPOS
+      </h2>
+    
+      <!-- Imagen -->
+      <img src="https://comfacesar.com/media/2017/FOTOS%20AGOSTO/simulador%20de%20credito.jpg"
+           alt="Imagen Simulador de crédito"
+           class="w-full h-auto max-h-96 object-contain rounded-lg">
+    </div>
+    
+  </div>
+<br>
+<app-footer></app-footer>

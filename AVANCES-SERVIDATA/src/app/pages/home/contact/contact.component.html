@@ -1,0 +1,50 @@
+<app-header></app-header>
+<section class="bg-gray-50 py-12 px-4 sm:px-8">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 items-center gap-10 bg-white rounded-3xl shadow-2xl p-6 sm:p-10 md:p-12">
+
+        <!-- Imagen primero en móviles -->
+        <!-- Imagen -->
+        <div class="order-1 md:order-2 flex justify-center">
+            <img src="assets/images/home/contact/atencion-al-cliente-inverteccupos.jpg" alt="Ilustración 3D contacto" class="w-full max-w-none sm:max-w-[90%] md:max-w-full object-contain rounded-xl shadow-xl transition-transform duration-300 hover:scale-105" />
+        </div>
+
+
+
+        <!-- Formulario -->
+        <div class="order-2 md:order-1">
+            <h2 style="color: #2240b1;font: bold;font-weight: 800;" class="text-3xl sm:text-4xl font-bold text-center text-blue-800 mb-4 uppercase">Contáctanos</h2>
+            <p class="text-gray-600 text-lg mb-6 text-center md:text-left">
+                ¿Tienes preguntas o sugerencias? Completa el formulario y nos pondremos en contacto contigo lo antes posible.
+            </p>
+
+            <form #contactForm="ngForm" (ngSubmit)="validDataFromContact()" class="space-y-4">
+                <div>
+                    <label class="block text-gray-700 font-medium mb-1">Nombres y Apellidos</label>
+                    <input type="text" name="nombre" [(ngModel)]="form.nombre" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                </div>
+
+                <div>
+                    <label class="block text-gray-700 font-medium mb-1">Correo electrónico</label>
+                    <input type="email" name="correo" [(ngModel)]="form.correo" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                </div>
+
+                <div>
+                    <label class="block text-gray-700 font-medium mb-1">Asunto</label>
+                    <input type="text" name="asunto" [(ngModel)]="form.asunto" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" />
+                </div>
+
+                <div>
+                    <label class="block text-gray-700 font-medium mb-1">Mensaje</label>
+                    <textarea name="mensaje" [(ngModel)]="form.mensaje" rows="5" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none"></textarea>
+                </div>
+
+                <div class="text-center">
+                    <p-button type="submit" label="Enviar mensaje" severity="help" />
+                </div>
+            </form>
+        </div>
+
+    </div>
+</section>
+
+<app-footer></app-footer>

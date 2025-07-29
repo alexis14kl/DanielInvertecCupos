@@ -1,0 +1,69 @@
+/* Estilo base de los botones del nav */
+
+.nav-btn {
+    background: transparent;
+    color: #2240B1;
+    font-size: 1rem;
+    /* Aumentado */
+    font-weight: 600;
+    /* Aumentado */
+    border-radius: 9999px;
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.nav-btn:hover {
+    background-color: #eaf3ff;
+    color: #00b8e6;
+    border-color: #00b8e6;
+    transform: scale(1.03);
+}
+
+
+/* Botón principal: Iniciar Solicitud */
+
+.gradient-btn {
+    background: linear-gradient(135deg, #2240B1, #00d0ff) !important;
+    color: white !important;
+    font-size: 1.05rem !important;
+    /* Aumentado */
+    font-weight: 700;
+    /* Más grande */
+    border-radius: 9999px !important;
+    border: none;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.gradient-btn:hover {
+    background: linear-gradient(135deg, #1e3fa0, #00b8e6) !important;
+    color: #fff !important;
+    transform: scale(1.05);
+}
+
+
+/* BTN INICIAR SOLICITUD */
+
+.custom-gradient-btn {
+    background: linear-gradient(135deg, #2240B1, #00d0ff);
+    color: #fff;
+    font-size: 1.05rem;
+    font-weight: 700;
+    padding: 0.75rem 1.6rem;
+    border: none;
+    border-radius: 9999px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 208, 255, 0.25);
+}
+
+.custom-gradient-btn:hover {
+    background: linear-gradient(135deg, #1e3fa0, #00b8e6);
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: 0 6px 18px rgba(0, 208, 255, 0.35);
+}
+
+.custom-gradient-btn:active {
+    transform: scale(0.98);
+    box-shadow: 0 3px 6px rgba(0, 208, 255, 0.25);
+}

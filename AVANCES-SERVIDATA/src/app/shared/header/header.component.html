@@ -1,0 +1,119 @@
+<!-- HEADER -->
+<div class="w-full bg-white text-black px-6 py-4 flex justify-between items-center shadow-md fixed top-0 left-0 z-50">
+    <!-- Logo / Título -->
+    <div class="flex items-center space-x-4">
+        <img style="border-radius: 100%;" width="80" height="80" src="assets/images/home/logoApp.jpeg" alt="">
+        <!-- Texto responsive -->
+        <div class="hidden sm:block">
+            <span class="text-2xl font-extrabold tracking-wide uppercase text-[#2240B1] dark:text-blue-500">
+        INVERTECCUPOS
+      </span>
+            <p style="color: #2240b1;font: bold;font-weight: 800;margin-bottom: -3px;" class="mt-1 text-xs font-medium text-gray-600 dark:text-gray-300">
+                Addi | Sistecredito | Su+ pay | vanti
+            </p>
+            <p style="color: #2240b1;font: bold;font-weight: 800;text-align: center;margin-top: -10px;" class="mt-1 text-xs font-medium text-gray-600 dark:text-gray-300">
+                Consultas a datacredito
+            </p>
+            <p style="text-align: center; margin-top: -14px;color: #2240b1;font: bold;font-weight: 800;">www.inverteccupos.co</p>
+        </div>
+    </div>
+    <!-- Botón hamburguesa (solo en móviles) -->
+    <p-button class="md:hidden" icon="pi pi-align-justify" (click)="visible = true" styleClass="p-button-rounded p-button-text p-button-plain text-black hover:bg-gray-100">
+    </p-button>
+
+    <!-- Menú horizontal mejorado (solo escritorio) -->
+    <nav class="hidden md:flex items-center gap-4 text-sm font-semibold">
+        <!-- Botones con fondo degradado y efecto de iluminación -->
+        <a routerLink="/index" class="nav-btn">
+      Inicio
+    </a>
+        <a routerLink="/index/Info-Sistecredito-addi" class="nav-btn">
+      Addi / Sistecrédito por efectivo
+    </a>
+        <a routerLink="/index/Simulador-De-credito" class="nav-btn">
+      Simulador de Crédito
+    </a>
+
+        <!-- Dropdown -->
+        <c-dropdown alignment="end">
+            <a style="cursor: pointer;" cDropdownToggle cNavLink class="nav-btn">
+        Más opciones
+      </a>
+            <ul cDropdownMenu>
+                <li><a routerLink="/index" fragment="servicios" class="transition duration-300 hover:text-[#2240B1]" (click)="visible = false" cDropdownItem>Servicios</a></li>
+                <li><a routerLink="/index" fragment="nosotros" class="transition duration-300 hover:text-[#2240B1]" (click)="visible = false" cDropdownItem>Nosotros</a></li>
+                <li><a routerLink="/index/faq" cDropdownItem class="transition duration-300 hover:text-[#2240B1]">Preguntas Frecuentes (FAQ)</a></li>
+            </ul>
+        </c-dropdown>
+
+        <!-- Botón destacado estilo neón -->
+        <!-- <a routerLink="/index/contacto" rel="noopener noreferrer" class="ml-4">
+            <p-button label="Iniciar Solicitud" severity="help" [rounded]="true" styleClass="gradient-btn hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5">
+            </p-button>
+        </a> -->
+        <a routerLink="/index/contacto" rel="noopener noreferrer" class="ml-4">
+            <button class="custom-gradient-btn">
+            Iniciar Solicitud
+          </button>
+        </a>
+    </nav>
+
+
+</div>
+
+<!-- Drawer lateral (visible solo en móviles al abrir) -->
+<p-drawer [(visible)]="visible" position="left" header="Menú" [modal]="true" styleClass="w-64">
+    <ul style="color: #2240b1;font: bold;font-weight: 800;" class="list-none p-0 m-0 text-black">
+        <!-- Inicio -->
+        <li class="p-4 border-b transition-all duration-300 hover:bg-gray-100 hover:translate-x-1 cursor-pointer">
+            <i class="pi pi-home mr-2"></i>
+            <a routerLink="/index" class="transition-all duration-300 hover:translate-x-1 hover:text-blue-600" (click)="visible = false">Inicio</a>
+        </li>
+
+        <!-- Addi / Sistecrédito -->
+        <li class="p-4 border-b transition-all duration-300 hover:bg-gray-100 hover:translate-x-1 cursor-pointer">
+            <i class="pi pi-credit-card mr-2"></i>
+            <a routerLink="/index/Info-Sistecredito-addi" class="transition-all duration-300 hover:translate-x-1 hover:text-blue-600" (click)="visible = false">Addi /
+        Sistecrédito por efectivo o Nequi</a>
+        </li>
+
+        <!-- Consultas a DataCrédito -->
+        <li class="p-4 border-b transition-all duration-300 hover:bg-gray-100 hover:translate-x-1 cursor-pointer">
+            <i class="pi pi-search mr-2"></i>
+            <a routerLink="/index/Simulador-De-credito" class="transition-all duration-300 hover:translate-x-1 hover:text-blue-600" (click)="visible = false">Simulador
+        de Crédito</a>
+        </li>
+
+        <!-- Servicios -->
+        <li class="p-4 border-b transition-all duration-300 hover:bg-gray-100 hover:translate-x-1 cursor-pointer">
+            <i class="pi pi-briefcase mr-2"></i>
+            <a routerLink="/index" fragment="servicios" class="transition-all duration-300 hover:translate-x-1 hover:text-blue-600" (click)="visible = false">Servicios</a>
+        </li>
+
+        <!-- Nosotros -->
+        <li class="p-4 border-b transition-all duration-300 hover:bg-gray-100 hover:translate-x-1 cursor-pointer">
+            <i class="pi pi-users mr-2"></i>
+            <a routerLink="/index" fragment="nosotros" class="transition-all duration-300 hover:translate-x-1 hover:text-blue-600" (click)="visible = false">Nosotros</a>
+        </li>
+
+        <!-- Preguntas Frecuentes -->
+        <li class="p-4 border-b transition-all duration-300 hover:bg-gray-100 hover:translate-x-1 cursor-pointer">
+            <i class="pi pi-question-circle mr-2"></i>
+            <a routerLink="/index/faq" class="transition-all duration-300 hover:translate-x-1 hover:text-blue-600">Preguntas
+        Frecuentes (FAQ)</a>
+        </li>
+
+        <!-- Iniciar Solicitud -->
+        <li class="p-4 border-b transition-all duration-300 hover:bg-gray-100 hover:translate-x-1 cursor-pointer">
+            <i class="pi pi-envelope mr-2 text-green-500"></i>
+            <a routerLink="/index/contacto" rel="noopener noreferrer" class="transition-all duration-300 hover:translate-x-1 hover:text-blue-600" (click)="visible = true">Iniciar
+        Solicitud</a>
+        </li>
+    </ul>
+</p-drawer>
+
+
+<!-- SUBHEADER (debajo del header) -->
+<!-- <div class="w-full mt-[50px] bg-[#F1F5FB] text-center py-2 text-lg font-semibold text-[#2240B1] shadow-sm z-40">
+    <p>Addi, Sistecrédito, Su+ pay, Vanti, Consultas a Datacrédito, www.inverteccupos.co</p>
+</div> -->

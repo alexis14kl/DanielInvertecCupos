@@ -1,0 +1,220 @@
+:host {
+  c-card {
+    min-width: 9rem;
+  }
+}
+
+
+/* Estilos ultra-responsivos */
+.enhanced-carousel {
+  perspective: 1000px;
+  padding: 0 5px;
+}
+
+.responsive-slide-card {
+  display: flex;
+  flex-direction: column;
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 12px 24px rgba(34, 64, 177, 0.1);
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
+  height: auto;
+  margin: 0 10px;
+}
+
+@media (min-width: 768px) {
+  .responsive-slide-card {
+    flex-direction: row;
+    height: 400px;
+    margin: 0;
+  }
+}
+
+/* Sección de texto */
+.text-section {
+  padding: 2rem 1.5rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: white;
+  position: relative;
+  z-index: 2;
+}
+
+@media (min-width: 768px) {
+  .text-section {
+    padding: 2rem 3rem;
+    flex: 0 0 45%;
+  }
+}
+
+.text-content {
+  max-width: 100%;
+}
+
+.responsive-title {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: #2240B1;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+  text-transform: uppercase;
+  background: linear-gradient(135deg, #2240B1 0%, #00d0ff 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@media (min-width: 768px) {
+  .responsive-title {
+    font-size: 2.25rem;
+  }
+}
+
+.responsive-subtitle {
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+@media (min-width: 768px) {
+  .responsive-subtitle {
+    font-size: 1.1rem;
+  }
+}
+
+/* Sección de imagen */
+.image-section {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  background: white;
+  position: relative;
+  min-height: 250px;
+}
+
+@media (min-width: 768px) {
+  .image-section {
+    flex: 0 0 55%;
+    padding: 2rem;
+  }
+}
+
+.responsive-slide-image {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  transition: transform 0.5s ease;
+  filter: drop-shadow(0 8px 16px rgba(34, 64, 177, 0.2));
+}
+
+/* Botón moderno */
+.modern-btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.75rem 1.5rem;
+  background: #2240B1;
+  color: white;
+  border: none;
+  border-radius: 50px;
+  font-weight: 600;
+  cursor: pointer;
+  overflow: hidden;
+  position: relative;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(34, 64, 177, 0.3);
+}
+
+.modern-btn:hover {
+  background: #1a3495;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(34, 64, 177, 0.4);
+}
+
+.modern-btn .btn-text {
+  transition: all 0.3s ease;
+}
+
+.modern-btn .btn-icon {
+  margin-left: 0.75rem;
+  transition: all 0.3s ease;
+  transform: translateX(0);
+}
+
+.modern-btn:hover .btn-icon {
+  transform: translateX(4px);
+}
+
+/* Indicadores responsivos */
+.responsive-indicators {
+  bottom: -25px;
+}
+
+.responsive-indicators button {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin: 0 5px;
+  background: #cbd5e1 !important;
+  border: none;
+  transition: all 0.3s ease;
+  opacity: 0.7;
+}
+
+.responsive-indicators button.active {
+  background: #2240B1 !important;
+  width: 30px;
+  border-radius: 6px;
+  opacity: 1;
+}
+
+/* Controles táctiles */
+.responsive-control {
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.9) !important;
+  border-radius: 50%;
+  color: #2240B1 !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  opacity: 1 !important;
+  border: none;
+}
+
+@media (min-width: 768px) {
+  .responsive-control {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+.responsive-control:hover {
+  background: #2240B1 !important;
+  color: white !important;
+  transform: scale(1.1);
+}
+
+.prev-control {
+  left: 5px !important;
+}
+
+.next-control {
+  right: 5px !important;
+}
+
+@media (min-width: 768px) {
+  .prev-control {
+    left: 20px !important;
+  }
+  .next-control {
+    right: 20px !important;
+  }
+}
+
