@@ -19,16 +19,6 @@ import {
   CarouselItemComponent
 } from '@coreui/angular';
 
-// CardComponent
-import {
-  ButtonDirective,
-  CardBodyComponent,
-  CardComponent,
-  CardImgDirective,
-  CardTextDirective,
-  CardTitleDirective
-} from '@coreui/angular';
-
 interface FinancialService {
   title: string;
   description: string;
@@ -46,9 +36,7 @@ interface FinancialService {
     CarouselItemComponent,
     CarouselControlComponent,
     RouterLink,
-    AnimateOnScroll,
-
-    CardComponent, CardImgDirective, CardBodyComponent, CardTitleDirective, CardTextDirective, ButtonDirective
+    AnimateOnScroll
   ],
   styles: [
     `

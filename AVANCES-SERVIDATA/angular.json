@@ -54,6 +54,12 @@
                                     "maximumError": "8kB"
                                 }
                             ],
+                            "baseHref": "/",
+                            "deleteOutputPath": false,
+                            "outputPath": {
+                                "base": "C:/laragon/www/QA/inverteccupos",
+                                "browser": ""
+                            },
                             "outputHashing": "all",
                             "serviceWorker": "ngsw-config.json"
                         },
@@ -106,5 +112,8 @@
                 }
             }
         }
+    },
+    "cli": {
+      "analytics": false
     }
 }

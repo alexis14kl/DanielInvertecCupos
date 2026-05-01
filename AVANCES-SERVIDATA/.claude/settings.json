@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__brave__list_pages",
+      "Bash(touch .nojekyll)",
+      "Bash(cp index.html 404.html)"
+    ]
+  }
+}

@@ -11,26 +11,16 @@ import { Subscription } from 'rxjs';
 import { InstallPwaButtonComponent } from '../install-pwa-button/install-pwa-button.component';
 
 import {
-  ContainerComponent,
   DropdownComponent,
-  DropdownDividerDirective,
   DropdownItemDirective,
   DropdownMenuDirective,
-  DropdownToggleDirective,
-  HeaderBrandComponent,
-  HeaderComponent as HeaderComponentAngularUI,
-  HeaderDividerComponent,
-  HeaderNavComponent,
-  HeaderTextComponent,
-  NavItemComponent,
-  NavLinkDirective
+  DropdownToggleDirective
 } from '@coreui/angular';
 
 @Component({
   selector: 'app-header',
   imports: [DrawerModule, ButtonModule, RouterModule, CommonModule,
     DropdownComponent,
-    DropdownDividerDirective,
     DropdownItemDirective,
     DropdownMenuDirective,
     DropdownToggleDirective, InstallPwaButtonComponent
