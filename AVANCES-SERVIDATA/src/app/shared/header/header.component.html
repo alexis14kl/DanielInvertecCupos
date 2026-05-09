@@ -20,6 +20,11 @@
         </span>
       </div>
 
+      <!-- CENTER: Promo rotativa (fade swap cada 5s) -->
+      <div class="hidden xl:flex flex-1 items-center justify-end mx-8 overflow-hidden relative" aria-label="Promociones del mes" aria-live="polite">
+        <span class="promo-text text-right" [class.promo-text--hidden]="!promoVisible()" [innerHTML]="promos()[currentPromoIndex()]"></span>
+      </div>
+
       <!-- RIGHT: Social / Quick contact -->
       <div class="flex items-center gap-4">
         <a href="https://wa.me/573103248752" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp principal" class="flex items-center gap-1 hover:text-[#00d0ff] transition-colors">
