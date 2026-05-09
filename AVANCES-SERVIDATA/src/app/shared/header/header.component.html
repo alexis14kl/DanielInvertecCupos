@@ -1,164 +1,191 @@
+<!-- HEADER SHELL: agrupa utility-bar + header en un solo contenedor fijo -->
+<div class="header-shell">
 <!-- TOP UTILITY BAR — info empresa + redes (desktop only) -->
-<div class="top-utility-bar hidden lg:block fixed top-0 left-0 right-0 z-[51] bg-gradient-to-r from-[#1a3495] via-[#2240B1] to-[#1a3495] text-white text-xs font-bold">
-  <div class="w-full max-w-[1920px] mx-auto px-4 sm:px-6 lg:px-12 xl:px-24">
-    <div class="flex items-center justify-between h-9">
-      <!-- LEFT: Contact info -->
-      <div class="flex items-center gap-6">
-        <a href="tel:+573103248752" class="flex items-center gap-2 hover:text-[#00d0ff] transition-colors">
-          <i class="pi pi-phone text-xs"></i>
-          <span>+57 310 324 8752</span>
-        </a>
-        <span class="text-white/40">|</span>
-        <a href="mailto:otonielgomez921@gmail.com" class="flex items-center gap-2 hover:text-[#00d0ff] transition-colors">
-          <i class="pi pi-envelope text-xs"></i>
-          <span>otonielgomez921&#64;gmail.com</span>
-        </a>
-        <span class="text-white/40">|</span>
-        <span class="flex items-center gap-2">
-          <i class="pi pi-map-marker text-xs"></i>
-          <span>Bogotá, Colombia</span>
-        </span>
-      </div>
+<div class="top-utility-bar hidden lg:block">
+    <span class="utility-glow" aria-hidden="true"></span>
+    <div class="w-full max-w-[1920px] mx-auto px-4 sm:px-6 lg:px-12 xl:px-24">
+        <div class="flex items-center justify-between h-9">
+            <!-- LEFT: Contact info -->
+            <div class="flex items-center gap-5">
+                <a href="tel:+573103248752" class="util-link" aria-label="Llamar">
+                    <i class="pi pi-phone"></i>
+                    <span>+57 310 324 8752</span>
+                </a>
+                <span class="util-divider" aria-hidden="true"></span>
+                <a href="mailto:otonielgomez921@gmail.com" class="util-link" aria-label="Enviar correo">
+                    <i class="pi pi-envelope"></i>
+                    <span>otonielgomez921&#64;gmail.com</span>
+                </a>
+                <span class="util-divider" aria-hidden="true"></span>
+                <span class="util-link util-link--static">
+                    <i class="pi pi-map-marker"></i>
+                    <span>Bogotá, Colombia</span>
+                </span>
+            </div>
 
-      <!-- CENTER: Promo rotativa (fade swap cada 5s) -->
-      <div class="hidden xl:flex flex-1 items-center justify-end mx-8 overflow-hidden relative" aria-label="Promociones del mes" aria-live="polite">
-        <span class="promo-text text-right" [class.promo-text--hidden]="!promoVisible()" [innerHTML]="promos()[currentPromoIndex()]"></span>
-      </div>
+            <!-- CENTER: Promo rotativa -->
+            <div class="hidden xl:flex flex-1 items-center justify-end mx-8 overflow-hidden relative" aria-label="Promociones del mes" aria-live="polite">
+                <span class="promo-text text-right" [class.promo-text--hidden]="!promoVisible()" [innerHTML]="promos()[currentPromoIndex()]"></span>
+            </div>
 
-      <!-- RIGHT: Social / Quick contact -->
-      <div class="flex items-center gap-4">
-        <a href="https://wa.me/573103248752" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp principal" class="flex items-center gap-1 hover:text-[#00d0ff] transition-colors">
-          <i class="pi pi-whatsapp"></i>
-          <span class="hidden xl:inline">310 324 8752</span>
-        </a>
-        <span class="text-white/40">|</span>
-        <a href="https://wa.me/573143020480" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp secundario" class="flex items-center gap-1 hover:text-[#00d0ff] transition-colors">
-          <i class="pi pi-whatsapp"></i>
-          <span class="hidden xl:inline">314 302 0480</span>
-        </a>
-      </div>
+            <!-- RIGHT: WhatsApp -->
+            <div class="flex items-center gap-3">
+                <a href="https://wa.me/573103248752" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp principal" class="util-wa">
+                    <i class="pi pi-whatsapp"></i>
+                    <span class="hidden xl:inline">310 324 8752</span>
+                </a>
+                <span class="util-divider util-divider--soft" aria-hidden="true"></span>
+                <a href="https://wa.me/573143020480" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp secundario" class="util-wa">
+                    <i class="pi pi-whatsapp"></i>
+                    <span class="hidden xl:inline">314 302 0480</span>
+                </a>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
 
 <!-- HEADER -->
-<div class="w-full bg-white text-black px-6 py-4 flex justify-between items-center shadow-md fixed top-0 left-0 lg:top-9 z-50">
-    <!-- Logo / Título -->
-    <div class="flex items-center space-x-4">
-        <img style="border-radius: 100%;" width="80" height="80" src="assets/images/home/logoApp.jpeg" alt="">
-        <!-- Texto responsive -->
-        <div class="hidden sm:block">
-            <span class="text-2xl font-extrabold tracking-wide uppercase text-[#2240B1] dark:text-blue-500">
-        INVERTECCUPOS
-      </span>
+<header class="site-header">
+    <div class="w-full max-w-[1920px] mx-auto px-6 lg:px-12 xl:px-24">
+        <div class="flex items-center justify-between gap-6 h-[78px]">
+            <!-- Brand -->
+            <a routerLink="/index" class="brand-block group" aria-label="Inicio - InverteCupos">
+                <span class="brand-logo">
+                    <img src="assets/images/home/logoApp.jpeg" alt="" />
+                </span>
+                <span class="hidden sm:flex flex-col">
+                    <span class="brand-name">INVERTEC<span class="brand-name__accent">CUPOS</span></span>
+                    <span class="brand-tag">Avances · Cupos · Crédito</span>
+                </span>
+            </a>
+
+            <!-- Mobile trigger -->
+            <p-button class="md:hidden" icon="pi pi-bars" (click)="visible = true" styleClass="mobile-trigger" aria-label="Abrir menú"></p-button>
+
+            <!-- Desktop nav -->
+            <nav class="hidden md:flex items-center gap-1" aria-label="Principal">
+                <a routerLink="/index" routerLinkActive="nav-link--active" [routerLinkActiveOptions]="{exact: true}" class="nav-link">
+                    <span>Inicio</span>
+                </a>
+                <a routerLink="/index/Info-Sistecredito-addi" routerLinkActive="nav-link--active" class="nav-link">
+                    <span>Addi / Sistecrédito por efectivo</span>
+                </a>
+                <a routerLink="/index/Simulador-De-credito" routerLinkActive="nav-link--active" class="nav-link">
+                    <span>Simulador de Crédito</span>
+                </a>
+
+                <c-dropdown alignment="end">
+                    <a style="cursor: pointer;" cDropdownToggle cNavLink class="nav-link nav-link--toggle">
+                        <span>Más opciones</span>
+                        <i class="pi pi-chevron-down"></i>
+                    </a>
+                    <ul cDropdownMenu class="dropdown-pro">
+                        <li>
+                            <a routerLink="/index" fragment="servicios" class="dropdown-pro__item" (click)="visible = false" cDropdownItem>
+                                <i class="pi pi-briefcase"></i>
+                                <span>Servicios</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a routerLink="/index" fragment="nosotros" class="dropdown-pro__item" (click)="visible = false" cDropdownItem>
+                                <i class="pi pi-users"></i>
+                                <span>Nosotros</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a routerLink="/index/faq" cDropdownItem class="dropdown-pro__item">
+                                <i class="pi pi-question-circle"></i>
+                                <span>Preguntas Frecuentes</span>
+                            </a>
+                        </li>
+                    </ul>
+                </c-dropdown>
+
+                <a routerLink="/index/contacto" rel="noopener noreferrer" class="ml-3">
+                    <button type="button" class="cta-pro">
+                        <span class="cta-pro__shimmer" aria-hidden="true"></span>
+                        <span class="cta-pro__label">Iniciar Solicitud</span>
+                        <i class="pi pi-arrow-right cta-pro__icon"></i>
+                    </button>
+                </a>
+            </nav>
         </div>
     </div>
-    <!-- Botón hamburguesa (solo en móviles) -->
-    <p-button class="md:hidden" icon="pi pi-align-justify" (click)="visible = true" styleClass="p-button-rounded p-button-text p-button-plain text-black hover:bg-gray-100">
-    </p-button>
+    <span class="header-strip" aria-hidden="true"></span>
+</header>
+</div><!-- /.header-shell -->
 
-    <!-- Menú horizontal mejorado (solo escritorio) -->
-    <nav class="hidden md:flex items-center gap-4 text-sm font-semibold">
-        <!-- Botones con fondo degradado y efecto de iluminación -->
-        <a routerLink="/index" class="nav-btn">
-      Inicio
-    </a>
-        <a routerLink="/index/Info-Sistecredito-addi" class="nav-btn">
-      Addi / Sistecrédito por efectivo
-    </a>
-        <a routerLink="/index/Simulador-De-credito" class="nav-btn">
-      Simulador de Crédito
-    </a>
+<!-- Spacer en flow para reservar la altura de la utility-bar + header fijos -->
+<div class="header-spacer" aria-hidden="true"></div>
 
-        <!-- Dropdown -->
-        <c-dropdown alignment="end">
-            <a style="cursor: pointer;" cDropdownToggle cNavLink class="nav-btn">
-        Más opciones
-      </a>
-            <ul cDropdownMenu>
-                <li><a routerLink="/index" fragment="servicios" class="transition duration-300 hover:text-[#2240B1]" (click)="visible = false" cDropdownItem>Servicios</a></li>
-                <li><a routerLink="/index" fragment="nosotros" class="transition duration-300 hover:text-[#2240B1]" (click)="visible = false" cDropdownItem>Nosotros</a></li>
-                <li><a routerLink="/index/faq" cDropdownItem class="transition duration-300 hover:text-[#2240B1]">Preguntas Frecuentes (FAQ)</a></li>
-            </ul>
-        </c-dropdown>
+<!-- Drawer lateral (móvil) -->
+<p-drawer [(visible)]="visible" position="left" header="Menú" [modal]="true" styleClass="drawer-pro w-72">
+    <div class="drawer-brand">
+        <span class="drawer-brand__logo">
+            <img src="assets/images/home/logoApp.jpeg" alt="" />
+        </span>
+        <div>
+            <span class="drawer-brand__name">INVERTECCUPOS</span>
+            <span class="drawer-brand__tag">Avances · Cupos · Crédito</span>
+        </div>
+    </div>
 
-        <!-- Botón destacado estilo neón -->
-        <!-- <a routerLink="/index/contacto" rel="noopener noreferrer" class="ml-4">
-            <p-button label="Iniciar Solicitud" severity="help" [rounded]="true" styleClass="gradient-btn hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5">
-            </p-button>
-        </a> -->
-        <a routerLink="/index/contacto" rel="noopener noreferrer" class="ml-4">
-            <button class="custom-gradient-btn">
-            Iniciar Solicitud
-          </button>
-        </a>
-    </nav>
-
-
-</div>
-
-<!-- Drawer lateral (visible solo en móviles al abrir) -->
-<p-drawer [(visible)]="visible" position="left" header="Menú" [modal]="true" styleClass="w-64">
-    <ul style="color: #2240b1;font: bold;font-weight: 800;" class="list-none p-0 m-0 text-black">
-        <!-- Inicio -->
-        <li class="p-4 border-b transition-all duration-300 hover:bg-gray-100 hover:translate-x-1 cursor-pointer">
-            <i class="pi pi-home mr-2"></i>
-            <a routerLink="/index" class="transition-all duration-300 hover:translate-x-1 hover:text-blue-600" (click)="visible = false">Inicio</a>
+    <ul class="drawer-list">
+        <li>
+            <a routerLink="/index" class="drawer-item" (click)="visible = false">
+                <i class="pi pi-home"></i>
+                <span>Inicio</span>
+                <i class="pi pi-arrow-right drawer-item__chev"></i>
+            </a>
+        </li>
+        <li>
+            <a routerLink="/index/Info-Sistecredito-addi" class="drawer-item" (click)="visible = false">
+                <i class="pi pi-credit-card"></i>
+                <span>Addi / Sistecrédito por efectivo o Nequi</span>
+                <i class="pi pi-arrow-right drawer-item__chev"></i>
+            </a>
+        </li>
+        <li>
+            <a routerLink="/index/Simulador-De-credito" class="drawer-item" (click)="visible = false">
+                <i class="pi pi-search"></i>
+                <span>Simulador de Crédito</span>
+                <i class="pi pi-arrow-right drawer-item__chev"></i>
+            </a>
+        </li>
+        <li>
+            <a routerLink="/index" fragment="servicios" class="drawer-item" (click)="visible = false">
+                <i class="pi pi-briefcase"></i>
+                <span>Servicios</span>
+                <i class="pi pi-arrow-right drawer-item__chev"></i>
+            </a>
+        </li>
+        <li>
+            <a routerLink="/index" fragment="nosotros" class="drawer-item" (click)="visible = false">
+                <i class="pi pi-users"></i>
+                <span>Nosotros</span>
+                <i class="pi pi-arrow-right drawer-item__chev"></i>
+            </a>
+        </li>
+        <li>
+            <a routerLink="/index/faq" class="drawer-item" (click)="visible = false">
+                <i class="pi pi-question-circle"></i>
+                <span>Preguntas Frecuentes (FAQ)</span>
+                <i class="pi pi-arrow-right drawer-item__chev"></i>
+            </a>
         </li>
 
-        <!-- Addi / Sistecrédito -->
-        <li class="p-4 border-b transition-all duration-300 hover:bg-gray-100 hover:translate-x-1 cursor-pointer">
-            <i class="pi pi-credit-card mr-2"></i>
-            <a routerLink="/index/Info-Sistecredito-addi" class="transition-all duration-300 hover:translate-x-1 hover:text-blue-600" (click)="visible = false">Addi /
-        Sistecrédito por efectivo o Nequi</a>
+        <li class="drawer-cta-wrap">
+            <a routerLink="/index/contacto" rel="noopener noreferrer" (click)="visible = false">
+                <button type="button" class="cta-pro cta-pro--full">
+                    <span class="cta-pro__shimmer" aria-hidden="true"></span>
+                    <span class="cta-pro__label">Iniciar Solicitud</span>
+                    <i class="pi pi-arrow-right cta-pro__icon"></i>
+                </button>
+            </a>
         </li>
 
-        <!-- Consultas a DataCrédito -->
-        <li class="p-4 border-b transition-all duration-300 hover:bg-gray-100 hover:translate-x-1 cursor-pointer">
-            <i class="pi pi-search mr-2"></i>
-            <a routerLink="/index/Simulador-De-credito" class="transition-all duration-300 hover:translate-x-1 hover:text-blue-600" (click)="visible = false">Simulador
-        de Crédito</a>
-        </li>
-
-        <!-- Servicios -->
-        <li class="p-4 border-b transition-all duration-300 hover:bg-gray-100 hover:translate-x-1 cursor-pointer">
-            <i class="pi pi-briefcase mr-2"></i>
-            <a routerLink="/index" fragment="servicios" class="transition-all duration-300 hover:translate-x-1 hover:text-blue-600" (click)="visible = false">Servicios</a>
-        </li>
-
-        <!-- Nosotros -->
-        <li class="p-4 border-b transition-all duration-300 hover:bg-gray-100 hover:translate-x-1 cursor-pointer">
-            <i class="pi pi-users mr-2"></i>
-            <a routerLink="/index" fragment="nosotros" class="transition-all duration-300 hover:translate-x-1 hover:text-blue-600" (click)="visible = false">Nosotros</a>
-        </li>
-
-        <!-- Preguntas Frecuentes -->
-        <li class="p-4 border-b transition-all duration-300 hover:bg-gray-100 hover:translate-x-1 cursor-pointer">
-            <i class="pi pi-question-circle mr-2"></i>
-            <a routerLink="/index/faq" class="transition-all duration-300 hover:translate-x-1 hover:text-blue-600">Preguntas
-        Frecuentes (FAQ)</a>
-        </li>
-
-        <!-- Iniciar Solicitud -->
-        <li class="p-4 border-b transition-all duration-300 hover:bg-gray-100 hover:translate-x-1 cursor-pointer">
-            <i class="pi pi-envelope mr-2 text-green-500"></i>
-            <a routerLink="/index/contacto" rel="noopener noreferrer" class="transition-all duration-300 hover:translate-x-1 hover:text-blue-600" (click)="visible = true">Iniciar
-        Solicitud</a>
-        </li>
-
-        <!-- En tu header.component.html -->
-        <li *ngIf="showInstallButton && !isStandalone" class="p-4 border-b transition-all duration-300 hover:bg-gray-100 hover:translate-x-1 cursor-pointer">
+        <li *ngIf="showInstallButton && !isStandalone" class="drawer-pwa">
             <app-install-pwa-button [deferredPrompt]="deferredPrompt"></app-install-pwa-button>
         </li>
-
-
-
     </ul>
 </p-drawer>
-
-
-
-<!-- SUBHEADER (debajo del header) -->
-<!-- <div class="w-full mt-[50px] bg-[#F1F5FB] text-center py-2 text-lg font-semibold text-[#2240B1] shadow-sm z-40">
-    <p>Addi, Sistecrédito, Su+ pay, Vanti, Consultas a Datacrédito, www.inverteccupos.co</p>
-</div> -->
