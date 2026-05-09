@@ -10,11 +10,24 @@
   background-color: #0a1840;
   padding: 2rem 1rem;
   overflow: hidden;
+  min-height: 32rem;
 }
 
 @media (min-width: 768px) {
   .hero-particles-section {
     padding: 3rem 2rem;
+    min-height: 30rem;
+  }
+}
+
+/* Slide altura fija — evita layout shift que distorsiona canvas particle */
+.slide-fixed-container {
+  height: 28rem;
+}
+
+@media (min-width: 768px) {
+  .slide-fixed-container {
+    height: 24rem;
   }
 }
 

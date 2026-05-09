@@ -133,15 +133,20 @@ export class WelcomeComponent implements OnInit, AfterViewInit, OnDestroy {
   
  
   // Carousel usando Angular ui
-  slides: any[] = new Array(3).fill({ id: -1, src: '', title: '', subtitle: '' });  
+  slides: any[] = new Array(3).fill({ id: -1, src: '', title: '', subtitle: '' });
   currentIndex = 0;
-  carouselInterval = 0;
+  carouselInterval = 3000;
+  carouselReady = false;
 
   constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
 
   ngOnInit() {
+    this.currentIndex = 0;
     if (isPlatformBrowser(this.platformId)) {
-      this.carouselInterval = 3000;
+      // defer activacion carousel para asegurar binding limpio cada mount
+      setTimeout(() => { this.carouselReady = true; }, 0);
+    } else {
+      this.carouselReady = true;
     }
     this.slides[0] = {
       id: 0,

@@ -5,18 +5,18 @@
   <canvas #heroCanvas class="hero-particles-canvas"></canvas>
   <div class="hero-particles-vignette"></div>
   <div class="hero-particles-content" pAnimateOnScroll enterClass="animate-enter fade-in-10 slide-in-from-t-20 animate-duration-1000">
-    <c-carousel [dark]="true" [wrap]="false" [interval]="carouselInterval">
+    <c-carousel *ngIf="carouselReady" [dark]="true" [wrap]="false" [interval]="carouselInterval">
         <!-- Indicadores de carrusel -->
         <c-carousel-indicators></c-carousel-indicators>
 
         <!-- Contenido del carrusel -->
         <c-carousel-inner>
             <c-carousel-item *ngFor="let slide of slides; let i = index" [active]="i === currentIndex">
-                <!-- Contenedor de cada slide -->
-                <div class="relative flex flex-col md:flex-row w-full h-auto md:h-96 overflow-hidden rounded-xl shadow-2xl group">
+                <!-- Contenedor de cada slide — altura fija para evitar layout shift con canvas particle -->
+                <div class="slide-fixed-container relative flex flex-col md:flex-row w-full overflow-hidden rounded-xl shadow-2xl group">
 
                     <!-- Descripción sin fondo azul, similar al ejemplo de PrimeNG -->
-                    <div class="p-6 md:p-8 flex-1 text-[#2240B1] bg-white flex flex-col justify-center">
+                    <div class="p-6 md:p-8 flex-1 text-[#2240B1] bg-white flex flex-col justify-center overflow-hidden">
                         <h2 class="responsive-title text-center text-2xl sm:text-3xl md:text-4xl font-bold mb-2 drop-shadow-lg animate-fade-in" style="text-transform: uppercase;">
                             {{ slide.title }}
                         </h2>
@@ -24,9 +24,7 @@
                             {{ slide.subtitle }}
                         </p>
 
-                        <!-- Botón centrado -->
                         <a routerLink="/index/contacto" class="modern-btn inline-block mx-auto">
-                            <!-- Añadido mx-auto -->
                             <span class="btn-text">Solicitar YA</span>
                             <span class="btn-icon">
               <i class="pi pi-arrow-right"></i>
@@ -34,14 +32,10 @@
                         </a>
                     </div>
 
-                    <!-- Imagen -->
-                    <!-- Imagen -->
-                    <div class="flex items-center justify-center bg-white p-4 md:p-6 h-[28rem] md:h-[32rem]">
+                    <!-- Imagen — flex-1 + h-full hereda altura fija del padre -->
+                    <div class="flex-1 flex items-center justify-center bg-white p-4 md:p-6 h-full overflow-hidden">
                         <img loading="lazy" [src]="slide.src" [alt]="slide.title" class="max-h-full max-w-full object-contain transition-transform duration-500" />
                     </div>
-
-
-
 
                 </div>
             </c-carousel-item>
