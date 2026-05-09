@@ -1,4 +1,4 @@
-import { Component, Inject, PLATFORM_ID, OnInit } from '@angular/core';
+import { Component, Inject, PLATFORM_ID, OnInit, AfterViewInit, OnDestroy, ViewChild, ElementRef } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { HeaderComponent } from '../../../shared/header/header.component';
 import { FooterComponent } from '../../../shared/footer/footer.component';
@@ -74,7 +74,12 @@ interface FinancialService {
   templateUrl: './welcome.component.html',
   styleUrl: './welcome.component.css'
 })
-export class WelcomeComponent implements OnInit {
+export class WelcomeComponent implements OnInit, AfterViewInit, OnDestroy {
+
+  @ViewChild('heroCanvas') private heroCanvas?: ElementRef<HTMLCanvasElement>;
+  private rafId: number | null = null;
+  private resizeHandler: (() => void) | null = null;
+
 
   // cards services
   services = [
@@ -227,7 +232,172 @@ export class WelcomeComponent implements OnInit {
       title: 'Aliados estratégicos',
       subtitle: 'Conviértete en beneficiario de ADDI, Sistecrédito, vanti y su+ pay con cupos convertidos a efectivo.'
     };
-    
-    
+
+
+  }
+
+  ngAfterViewInit(): void {
+    if (isPlatformBrowser(this.platformId)) {
+      setTimeout(() => this.initParticleNetwork(), 500);
+    }
+  }
+
+  ngOnDestroy(): void {
+    if (this.rafId !== null) {
+      cancelAnimationFrame(this.rafId);
+    }
+    if (this.resizeHandler) {
+      window.removeEventListener('resize', this.resizeHandler);
+    }
+  }
+
+  private initParticleNetwork() {
+    const canvas = this.heroCanvas?.nativeElement;
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    const isMobile = window.innerWidth < 768;
+
+    let W = 0, H = 0;
+    const resize = () => {
+      const rect = canvas.getBoundingClientRect();
+      W = canvas.width = rect.width;
+      H = canvas.height = rect.height;
+    };
+    resize();
+    this.resizeHandler = resize;
+    window.addEventListener('resize', resize, { passive: true });
+
+    const BLUE_GLOW = 'rgba(34,64,177,';
+    const CYAN_GLOW = 'rgba(0,208,255,';
+
+    const N = isMobile ? 30 : 90;
+    const pts = Array.from({ length: N }, (_, i) => ({
+      x: Math.random() * W,
+      y: Math.random() * H,
+      vx: (Math.random() - 0.5) * 0.5,
+      vy: (Math.random() - 0.5) * 0.5,
+      r: i < 18 ? 3 + Math.random() * 3 : 1 + Math.random() * 1.5,
+      isHub: i < 18,
+      phase: Math.random() * Math.PI * 2,
+    }));
+
+    const pulses: Array<{ ax: number; ay: number; bx: number; by: number; t: number; speed: number; r: number }> = [];
+    let pulseTimer = 0;
+    let connections: Array<{ ax: number; ay: number; bx: number; by: number }> = [];
+
+    const spawnPulse = () => {
+      if (!connections.length) return;
+      const c = connections[Math.floor(Math.random() * connections.length)];
+      pulses.push({
+        ax: c.ax, ay: c.ay, bx: c.bx, by: c.by,
+        t: 0,
+        speed: 0.006 + Math.random() * 0.008,
+        r: 2 + Math.random() * 3,
+      });
+    };
+
+    let last = performance.now();
+    let elapsed = 0;
+    const FRAME_INTERVAL = isMobile ? 67 : 33;
+
+    const tick = (now: number) => {
+      this.rafId = requestAnimationFrame(tick);
+      if (now - last < FRAME_INTERVAL) return;
+      const dt = Math.min((now - last) / 1000, 0.05);
+      last = now;
+      elapsed += dt;
+      const alpha = Math.min(elapsed / 1.5, 0.7);
+
+      const CONN = Math.min(W, H) * 0.22;
+
+      ctx.clearRect(0, 0, W, H);
+      ctx.fillStyle = '#0a1840';
+      ctx.fillRect(0, 0, W, H);
+
+      for (const p of pts) {
+        p.x += p.vx; p.y += p.vy;
+        if (p.x < 0) p.x = W; if (p.x > W) p.x = 0;
+        if (p.y < 0) p.y = H; if (p.y > H) p.y = 0;
+      }
+
+      connections = [];
+      ctx.save();
+      for (let i = 0; i < N; i++) {
+        for (let j = i + 1; j < N; j++) {
+          const dx = pts[i].x - pts[j].x;
+          const dy = pts[i].y - pts[j].y;
+          const d = Math.sqrt(dx * dx + dy * dy);
+          if (d < CONN) {
+            const s = (1 - d / CONN) * alpha;
+            ctx.beginPath();
+            ctx.moveTo(pts[i].x, pts[i].y);
+            ctx.lineTo(pts[j].x, pts[j].y);
+            const bright = (pts[i].isHub || pts[j].isHub) ? s * 0.8 : s * 0.45;
+            ctx.strokeStyle = CYAN_GLOW + bright + ')';
+            ctx.lineWidth = pts[i].isHub || pts[j].isHub ? 1.2 : 0.7;
+            ctx.stroke();
+            connections.push({ ax: pts[i].x, ay: pts[i].y, bx: pts[j].x, by: pts[j].y });
+          }
+        }
+      }
+      ctx.restore();
+
+      for (let i = 0; i < N; i++) {
+        const p = pts[i];
+        const pulse = 0.6 + 0.4 * Math.sin(elapsed * 1.8 + p.phase);
+        const a = (p.isHub ? pulse * 0.95 : 0.65) * alpha;
+        const r = p.r;
+
+        const grad = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, r * (p.isHub ? 6 : 4));
+        grad.addColorStop(0, (p.isHub ? CYAN_GLOW : BLUE_GLOW) + a + ')');
+        grad.addColorStop(0.3, BLUE_GLOW + (a * 0.4) + ')');
+        grad.addColorStop(1, 'rgba(0,0,0,0)');
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, r * (p.isHub ? 6 : 4), 0, Math.PI * 2);
+        ctx.fillStyle = grad;
+        ctx.fill();
+
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, r, 0, Math.PI * 2);
+        ctx.fillStyle = p.isHub
+          ? `rgba(120,220,255,${a})`
+          : `rgba(34,64,177,${a})`;
+        ctx.fill();
+      }
+
+      pulseTimer -= dt;
+      if (pulseTimer <= 0 && alpha > 0.5) {
+        spawnPulse(); spawnPulse();
+        pulseTimer = 0.08 + Math.random() * 0.12;
+      }
+
+      for (let i = pulses.length - 1; i >= 0; i--) {
+        const pu = pulses[i];
+        pu.t += pu.speed;
+        if (pu.t > 1) { pulses.splice(i, 1); continue; }
+        const fade = pu.t < 0.12 ? pu.t / 0.12 : pu.t > 0.85 ? (1 - pu.t) / 0.15 : 1;
+        const px = pu.ax + (pu.bx - pu.ax) * pu.t;
+        const py = pu.ay + (pu.by - pu.ay) * pu.t;
+        const pr = pu.r;
+
+        const pg = ctx.createRadialGradient(px, py, 0, px, py, pr * 5);
+        pg.addColorStop(0, `rgba(220,245,255,${fade * alpha})`);
+        pg.addColorStop(0.3, `rgba(0,180,230,${fade * alpha * 0.6})`);
+        pg.addColorStop(1, 'rgba(0,0,0,0)');
+        ctx.beginPath();
+        ctx.arc(px, py, pr * 5, 0, Math.PI * 2);
+        ctx.fillStyle = pg;
+        ctx.fill();
+
+        ctx.beginPath();
+        ctx.arc(px, py, pr, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(255,255,255,${fade * alpha})`;
+        ctx.fill();
+      }
+    };
+
+    this.rafId = requestAnimationFrame(tick);
   }
 }

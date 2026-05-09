@@ -1,7 +1,10 @@
 <app-header></app-header>
 <div class="h-[2rem]"></div>
 <br>
-<div pAnimateOnScroll enterClass="animate-enter fade-in-10 slide-in-from-t-20 animate-duration-1000">
+<section class="hero-particles-section">
+  <canvas #heroCanvas class="hero-particles-canvas"></canvas>
+  <div class="hero-particles-vignette"></div>
+  <div class="hero-particles-content" pAnimateOnScroll enterClass="animate-enter fade-in-10 slide-in-from-t-20 animate-duration-1000">
     <c-carousel [dark]="true" [wrap]="false" [interval]="carouselInterval">
         <!-- Indicadores de carrusel -->
         <c-carousel-indicators></c-carousel-indicators>
@@ -48,7 +51,8 @@
         <c-carousel-control [routerLink] caption="Previous" direction="prev" class="text-white hover:bg-gray-700 rounded-full p-2 bg-opacity-50" />
         <c-carousel-control [routerLink] caption="Next" direction="next" class="text-white hover:bg-gray-700 rounded-full p-2 bg-opacity-50" />
     </c-carousel>
-</div>
+  </div>
+</section>
 
 
 <!-- contenido del app -->

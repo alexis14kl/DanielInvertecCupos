@@ -4,6 +4,44 @@
   }
 }
 
+/* Hero particle network background */
+.hero-particles-section {
+  position: relative;
+  background-color: #0a1840;
+  padding: 2rem 1rem;
+  overflow: hidden;
+}
+
+@media (min-width: 768px) {
+  .hero-particles-section {
+    padding: 3rem 2rem;
+  }
+}
+
+.hero-particles-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hero-particles-vignette {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  background: radial-gradient(ellipse at center, transparent 55%, rgba(10, 24, 64, 0.6) 100%);
+}
+
+.hero-particles-content {
+  position: relative;
+  z-index: 2;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
 
 /* Estilos ultra-responsivos */
 .enhanced-carousel {
