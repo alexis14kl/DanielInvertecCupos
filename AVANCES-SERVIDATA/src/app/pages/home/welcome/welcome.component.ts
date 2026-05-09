@@ -79,6 +79,7 @@ export class WelcomeComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild('heroCanvas') private heroCanvas?: ElementRef<HTMLCanvasElement>;
   private rafId: number | null = null;
   private resizeHandler: (() => void) | null = null;
+  private resizeObserver: ResizeObserver | null = null;
 
 
   // cards services
@@ -243,7 +244,8 @@ export class WelcomeComponent implements OnInit, AfterViewInit, OnDestroy {
 
   ngAfterViewInit(): void {
     if (isPlatformBrowser(this.platformId)) {
-      setTimeout(() => this.initParticleNetwork(), 500);
+      // Doble RAF garantiza canvas montado + layout aplicado antes init
+      requestAnimationFrame(() => requestAnimationFrame(() => this.initParticleNetwork()));
     }
   }
 
@@ -253,6 +255,9 @@ export class WelcomeComponent implements OnInit, AfterViewInit, OnDestroy {
     }
     if (this.resizeHandler) {
       window.removeEventListener('resize', this.resizeHandler);
+    }
+    if (this.resizeObserver) {
+      this.resizeObserver.disconnect();
     }
   }
 
@@ -267,12 +272,18 @@ export class WelcomeComponent implements OnInit, AfterViewInit, OnDestroy {
     let W = 0, H = 0;
     const resize = () => {
       const rect = canvas.getBoundingClientRect();
-      W = canvas.width = rect.width;
-      H = canvas.height = rect.height;
+      W = canvas.width = Math.max(rect.width, 1);
+      H = canvas.height = Math.max(rect.height, 1);
     };
     resize();
     this.resizeHandler = resize;
     window.addEventListener('resize', resize, { passive: true });
+
+    // ResizeObserver auto-ajusta cuando carousel monta y altura cambia
+    if (typeof ResizeObserver !== 'undefined') {
+      this.resizeObserver = new ResizeObserver(() => resize());
+      this.resizeObserver.observe(canvas);
+    }
 
     const BLUE_GLOW = 'rgba(34,64,177,';
     const CYAN_GLOW = 'rgba(0,208,255,';
