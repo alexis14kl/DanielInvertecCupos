@@ -1,4 +1,5 @@
-import { Component} from '@angular/core';
+import { Component, Inject, PLATFORM_ID, OnInit } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import { HeaderComponent } from '../../../shared/header/header.component';
 import { FooterComponent } from '../../../shared/footer/footer.component';
 import { AnimateOnScrollModule } from 'primeng/animateonscroll';
@@ -73,7 +74,7 @@ interface FinancialService {
   templateUrl: './welcome.component.html',
   styleUrl: './welcome.component.css'
 })
-export class WelcomeComponent {
+export class WelcomeComponent implements OnInit {
 
   // cards services
   services = [
@@ -129,9 +130,14 @@ export class WelcomeComponent {
   // Carousel usando Angular ui
   slides: any[] = new Array(3).fill({ id: -1, src: '', title: '', subtitle: '' });  
   currentIndex = 0;
-  interval: any;
+  carouselInterval = 0;
+
+  constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
 
   ngOnInit() {
+    if (isPlatformBrowser(this.platformId)) {
+      this.carouselInterval = 3000;
+    }
     this.slides[0] = {
       id: 0,
       src: 'assets/images/home/AVANCES-SERVIDATA-img00.jpeg',
