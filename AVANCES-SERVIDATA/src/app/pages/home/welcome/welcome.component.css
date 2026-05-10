@@ -59,20 +59,21 @@
 .aliados-domino {
   position: relative;
   background:
-    radial-gradient(ellipse at 50% 0%, rgba(0, 208, 255, 0.06) 0%, transparent 60%),
-    linear-gradient(180deg, #f6f9ff 0%, #ffffff 100%);
-  padding: 2.5rem 1.25rem 3rem;
+    radial-gradient(ellipse at 50% 0%, rgba(0, 208, 255, 0.08) 0%, transparent 60%),
+    radial-gradient(ellipse at 50% 100%, rgba(34, 64, 177, 0.06) 0%, transparent 50%),
+    linear-gradient(180deg, #f6f9ff 0%, #eef3ff 100%);
+  padding: 4rem 2rem 4.5rem;
   border-bottom: 1px solid rgba(34, 64, 177, 0.06);
-  perspective: 1000px;
+  perspective: 1200px;
 }
 
 .aliados-domino__grid {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   align-items: stretch;
-  max-width: 1280px;
+  max-width: 1680px;
   margin: 0 auto;
-  gap: 1rem;
+  gap: 1.5rem;
 }
 
 .aliado-tile {
@@ -82,15 +83,16 @@
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  padding: 1.6rem 0.75rem 1.1rem;
+  padding: 2.5rem 1.25rem 1.75rem;
   margin: 0;
-  border-radius: 18px;
+  min-height: 240px;
+  border-radius: 24px;
   border: 1px solid rgba(34, 64, 177, 0.08);
   box-shadow:
-    0 1px 0 rgba(255, 255, 255, 0.9) inset,
+    0 1px 0 rgba(255, 255, 255, 0.95) inset,
     0 -2px 0 rgba(34, 64, 177, 0.04) inset,
-    0 6px 18px -4px rgba(34, 64, 177, 0.18),
-    0 18px 32px -12px rgba(34, 64, 177, 0.18),
+    0 8px 22px -4px rgba(34, 64, 177, 0.18),
+    0 24px 44px -16px rgba(34, 64, 177, 0.22),
     0 2px 4px -1px rgba(34, 64, 177, 0.08);
   transform: translateZ(0);
   transition:
@@ -130,96 +132,162 @@
 
 .aliado-tile__icon {
   position: relative;
-  width: 64px;
-  height: 64px;
+  width: 100%;
+  max-width: 180px;
+  height: 130px;
   display: flex;
   align-items: center;
   justify-content: center;
   color: #ffffff;
   font-size: 1.7rem;
-  margin-bottom: 0.95rem;
-  border-radius: 50%;
-  background: linear-gradient(145deg, #2d4ec3 0%, #2240B1 50%, #1a3495 100%);
+  margin-bottom: 1.4rem;
+  border-radius: 18px;
+  background: linear-gradient(160deg, #ffffff 0%, #f0f5ff 100%);
+  padding: 4px 6px;
+  border: 1px solid rgba(34, 64, 177, 0.12);
   box-shadow:
-    0 1px 0 rgba(255, 255, 255, 0.4) inset,
-    0 -3px 6px rgba(0, 0, 0, 0.18) inset,
-    0 6px 14px -3px rgba(34, 64, 177, 0.5),
-    0 2px 4px -1px rgba(0, 0, 0, 0.15);
+    0 1px 0 rgba(255, 255, 255, 0.95) inset,
+    0 -3px 6px rgba(34, 64, 177, 0.08) inset,
+    0 8px 18px -4px rgba(34, 64, 177, 0.28),
+    0 2px 4px -1px rgba(0, 0, 0, 0.08);
   transition:
     transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
     box-shadow 0.4s ease,
-    background 0.4s ease;
+    border-color 0.4s ease;
+  overflow: hidden;
 }
 
 .aliado-tile__icon::after {
   content: '';
   position: absolute;
-  top: 8%;
-  left: 14%;
-  width: 50%;
+  top: 4%;
+  left: 6%;
+  width: 40%;
   height: 35%;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.45), transparent 70%);
-  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.6), transparent 70%);
+  border-radius: 10px;
   pointer-events: none;
+  z-index: 2;
 }
+
+.aliado-tile__icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  position: relative;
+  z-index: 1;
+  filter: drop-shadow(0 2px 4px rgba(34, 64, 177, 0.15));
+  transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+  transform: scale(1);
+}
+
+/* Escala individual — Su+ Pay e iconos cuadrados llenan mas */
+.aliado-tile__icon img[alt="Addi"] { transform: scale(1); }
+.aliado-tile__icon img[alt="Sistecrédito"] { transform: scale(1.7); }
+.aliado-tile__icon img[alt="Su+ Pay"] { transform: scale(1.52); }
+.aliado-tile__icon img[alt="Vanti"] { transform: scale(1); }
+.aliado-tile__icon img[alt="DataCrédito"] { transform: scale(1.45); }
+.aliado-tile__icon img[alt="TransUnion (CIFIN)"] { transform: scale(1.05); }
 
 .aliado-tile:hover .aliado-tile__icon {
-  transform: translateY(-3px) scale(1.08);
-  background: linear-gradient(145deg, #00d0ff 0%, #2240B1 60%, #1a3495 100%);
+  transform: translateY(-3px) scale(1.06);
+  border-color: rgba(0, 208, 255, 0.45);
   box-shadow:
-    0 1px 0 rgba(255, 255, 255, 0.5) inset,
-    0 -3px 6px rgba(0, 0, 0, 0.2) inset,
-    0 10px 22px -4px rgba(0, 208, 255, 0.55),
-    0 4px 8px -2px rgba(0, 0, 0, 0.2);
+    0 1px 0 rgba(255, 255, 255, 1) inset,
+    0 -3px 6px rgba(0, 208, 255, 0.12) inset,
+    0 12px 26px -4px rgba(0, 208, 255, 0.4),
+    0 4px 8px -2px rgba(0, 0, 0, 0.12);
 }
 
+
 .aliado-tile__label {
-  font-size: 0.78rem;
+  font-size: 0.92rem;
   font-weight: 800;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   color: #0d1733;
   text-align: center;
   transition: color 0.3s ease;
+  position: relative;
+  padding-top: 0.6rem;
+}
+
+.aliado-tile__label::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 28px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #00d0ff, transparent);
+  border-radius: 999px;
+  opacity: 0.7;
 }
 
 .aliado-tile:hover .aliado-tile__label {
   color: #2240B1;
 }
 
+@media (max-width: 1199px) {
+  .aliados-domino {
+    padding: 3rem 1.5rem 3.5rem;
+  }
+  .aliado-tile {
+    padding: 1.75rem 1rem 1.25rem;
+    min-height: 220px;
+    border-radius: 20px;
+  }
+  .aliado-tile__icon {
+    height: 110px;
+    margin-bottom: 1rem;
+  }
+  .aliado-tile__label {
+    font-size: 0.82rem;
+  }
+}
+
 @media (max-width: 991px) {
   .aliados-domino {
-    padding: 2rem 1rem 2.25rem;
+    padding: 2.5rem 1rem 3rem;
   }
   .aliados-domino__grid {
     grid-template-columns: repeat(3, 1fr);
-    gap: 0.85rem;
+    gap: 1.25rem;
   }
   .aliado-tile {
-    padding: 1.25rem 0.5rem 0.85rem;
-    border-radius: 14px;
+    padding: 1.5rem 0.85rem 1.1rem;
+    min-height: 200px;
+    border-radius: 18px;
   }
   .aliado-tile__icon {
-    width: 54px;
-    height: 54px;
-    font-size: 1.4rem;
-    margin-bottom: 0.65rem;
+    height: 95px;
+    margin-bottom: 0.85rem;
+    padding: 4px 6px;
+  }
+  .aliado-tile__label {
+    font-size: 0.78rem;
   }
 }
 
 @media (max-width: 480px) {
   .aliados-domino {
-    padding: 1.5rem 0.75rem 2rem;
+    padding: 2rem 0.85rem 2.5rem;
   }
   .aliados-domino__grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 0.75rem;
+    gap: 1rem;
   }
   .aliado-tile {
-    padding: 1rem 0.5rem 0.75rem;
+    padding: 1.25rem 0.5rem 0.95rem;
+    min-height: 175px;
+  }
+  .aliado-tile__icon {
+    height: 85px;
+    padding: 4px 6px;
   }
   .aliado-tile__label {
-    font-size: 0.7rem;
+    font-size: 0.72rem;
   }
 }
 

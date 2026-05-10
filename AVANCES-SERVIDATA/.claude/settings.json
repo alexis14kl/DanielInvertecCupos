@@ -3,7 +3,22 @@
     "allow": [
       "mcp__brave__list_pages",
       "Bash(touch .nojekyll)",
-      "Bash(cp index.html 404.html)"
+      "Bash(cp index.html 404.html)",
+      "WebFetch(domain:seeklogo.com)",
+      "WebFetch(domain:www.mundosumas.com)",
+      "Bash(curl -sLo supay.png \"https://images.seeklogo.com/logo-png/54/1/su-pay-logo-png_seeklogo-541278.png\" -H \"User-Agent: Mozilla/5.0\" --referer \"https://seeklogo.com/\")",
+      "Bash(curl -sLo addi.png \"https://colombiafintech.co/wp-content/uploads/2025/03/Adelante-Soluciones-Financieras-Addi.png\")",
+      "Bash(curl -sLo sistecredito.png \"https://play-lh.googleusercontent.com/Q-Kfwf-YiRvPsgmXHsDWKQuCK1hbQOAeW9q57MXsbJOpoO7SlXkCK1qmTQncjSxO1g=w240-h480-rw\")",
+      "Bash(curl -sLo datacredito.webp \"https://caracoltv.brightspotcdn.com/dims4/default/34526fb/2147483647/strip/true/crop/1929x1085+0+45/resize/768x432!/format/webp/quality/75/?url=https%3A%2F%2Fcaracol-brightspot.s3.us-west-2.amazonaws.com%2Fe5%2F7d%2F4dd401fb4c379c47d8633d04901f%2Fdatacredito-experian.jpg\")",
+      "Bash(curl -sLo datacredito-new.png \"https://colombiafintech.co/wp-content/uploads/2025/03/Experian-Colombia-Datacredito-Experian-1.png\")",
+      "Bash(curl -sLo sistecredito-fintech.png \"https://colombiafintech.co/wp-content/uploads/2025/03/Sistecredito.png\")",
+      "Bash(curl -sLo supay-test.png \"https://colombiafintech.co/wp-content/uploads/2025/03/Sumas.png\" -w \"%{http_code}\\\\n\")",
+      "WebFetch(domain:sumas.co)",
+      "Bash(curl -sLo supay-new.png \"https://www.mundosumas.com/wp-content/uploads/2024/01/logosumas.png\" -H \"User-Agent: Mozilla/5.0\")",
+      "Bash(curl -sLo supay-favicon.png \"https://www.mundosumas.com/favicon.ico\" -H \"User-Agent: Mozilla/5.0\")",
+      "WebFetch(domain:companieslogo.com)",
+      "WebFetch(domain:brandlogos.net)",
+      "Bash(curl -sLo transunion-clp.png \"https://companieslogo.com/img/orig/TRU-06bc4c0a.png?t=1720244494\" -H \"User-Agent: Mozilla/5.0\")"
     ]
   }
 }
