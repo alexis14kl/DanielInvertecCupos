@@ -55,54 +55,172 @@
   margin: 0 auto;
 }
 
-/* ─── ALIADOS strip compacto — pills bajo hero ─── */
-.aliados-strip {
-  background: #ffffff;
-  padding: 1rem 1.25rem;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  gap: 0.75rem 1rem;
-  border-bottom: 1px solid #e5e7eb;
+/* ─── ALIADOS 3D — floating tiles con depth ─── */
+.aliados-domino {
+  position: relative;
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(0, 208, 255, 0.06) 0%, transparent 60%),
+    linear-gradient(180deg, #f6f9ff 0%, #ffffff 100%);
+  padding: 2.5rem 1.25rem 3rem;
+  border-bottom: 1px solid rgba(34, 64, 177, 0.06);
+  perspective: 1000px;
 }
 
-.aliados-strip-label {
-  font-size: 0.7rem;
-  font-weight: 800;
-  letter-spacing: 0.15em;
-  color: #6b7280;
-  text-transform: uppercase;
+.aliados-domino__grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  align-items: stretch;
+  max-width: 1280px;
+  margin: 0 auto;
+  gap: 1rem;
+}
+
+.aliado-tile {
+  position: relative;
+  background: linear-gradient(160deg, #ffffff 0%, #f6f9ff 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 1.6rem 0.75rem 1.1rem;
   margin: 0;
+  border-radius: 18px;
+  border: 1px solid rgba(34, 64, 177, 0.08);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.9) inset,
+    0 -2px 0 rgba(34, 64, 177, 0.04) inset,
+    0 6px 18px -4px rgba(34, 64, 177, 0.18),
+    0 18px 32px -12px rgba(34, 64, 177, 0.18),
+    0 2px 4px -1px rgba(34, 64, 177, 0.08);
+  transform: translateZ(0);
+  transition:
+    transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1),
+    box-shadow 0.4s ease,
+    border-color 0.4s ease;
+  transform-style: preserve-3d;
 }
 
-.aliados-strip-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  justify-content: center;
-}
-
-.aliado-pill {
-  display: inline-flex;
-  align-items: center;
-  padding: 0.35rem 0.85rem;
-  font-size: 0.78rem;
-  font-weight: 700;
-  color: #2240B1;
-  background: #eff4ff;
-  border: 1px solid #c7d6ff;
+.aliado-tile::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 12%;
+  right: 12%;
+  height: 1.5px;
+  background: linear-gradient(90deg, transparent, rgba(0, 208, 255, 0.6), transparent);
   border-radius: 999px;
-  transition: all 0.25s ease;
-  cursor: default;
+  opacity: 0;
+  transition: opacity 0.4s ease;
 }
 
-.aliado-pill:hover {
-  background: #2240B1;
+.aliado-tile:hover {
+  transform: translateY(-10px) rotateX(3deg);
+  border-color: rgba(0, 208, 255, 0.35);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.95) inset,
+    0 -2px 0 rgba(0, 208, 255, 0.08) inset,
+    0 14px 28px -6px rgba(34, 64, 177, 0.32),
+    0 32px 56px -16px rgba(0, 208, 255, 0.28),
+    0 4px 8px -2px rgba(34, 64, 177, 0.15);
+}
+
+.aliado-tile:hover::before {
+  opacity: 1;
+}
+
+.aliado-tile__icon {
+  position: relative;
+  width: 64px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   color: #ffffff;
-  border-color: #2240B1;
-  transform: translateY(-1px);
-  box-shadow: 0 4px 10px rgba(34, 64, 177, 0.25);
+  font-size: 1.7rem;
+  margin-bottom: 0.95rem;
+  border-radius: 50%;
+  background: linear-gradient(145deg, #2d4ec3 0%, #2240B1 50%, #1a3495 100%);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.4) inset,
+    0 -3px 6px rgba(0, 0, 0, 0.18) inset,
+    0 6px 14px -3px rgba(34, 64, 177, 0.5),
+    0 2px 4px -1px rgba(0, 0, 0, 0.15);
+  transition:
+    transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+    box-shadow 0.4s ease,
+    background 0.4s ease;
+}
+
+.aliado-tile__icon::after {
+  content: '';
+  position: absolute;
+  top: 8%;
+  left: 14%;
+  width: 50%;
+  height: 35%;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.45), transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.aliado-tile:hover .aliado-tile__icon {
+  transform: translateY(-3px) scale(1.08);
+  background: linear-gradient(145deg, #00d0ff 0%, #2240B1 60%, #1a3495 100%);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.5) inset,
+    0 -3px 6px rgba(0, 0, 0, 0.2) inset,
+    0 10px 22px -4px rgba(0, 208, 255, 0.55),
+    0 4px 8px -2px rgba(0, 0, 0, 0.2);
+}
+
+.aliado-tile__label {
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #0d1733;
+  text-align: center;
+  transition: color 0.3s ease;
+}
+
+.aliado-tile:hover .aliado-tile__label {
+  color: #2240B1;
+}
+
+@media (max-width: 991px) {
+  .aliados-domino {
+    padding: 2rem 1rem 2.25rem;
+  }
+  .aliados-domino__grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.85rem;
+  }
+  .aliado-tile {
+    padding: 1.25rem 0.5rem 0.85rem;
+    border-radius: 14px;
+  }
+  .aliado-tile__icon {
+    width: 54px;
+    height: 54px;
+    font-size: 1.4rem;
+    margin-bottom: 0.65rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .aliados-domino {
+    padding: 1.5rem 0.75rem 2rem;
+  }
+  .aliados-domino__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+  }
+  .aliado-tile {
+    padding: 1rem 0.5rem 0.75rem;
+  }
+  .aliado-tile__label {
+    font-size: 0.7rem;
+  }
 }
 
 
