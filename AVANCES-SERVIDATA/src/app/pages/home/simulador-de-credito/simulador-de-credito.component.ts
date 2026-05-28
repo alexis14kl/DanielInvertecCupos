@@ -32,22 +32,24 @@ export class SimuladorDeCreditoComponent  {
 
 
 
-  valorSolicitado: number | null = 1000000; // Valor por defecto como en la imagen
-  cuotas: number = 6; // 6 meses como en la imagen
+  valorSolicitado: number | null = 510000; // Valor por defecto
+  cuotas: number = 3;
   plazo: string = 'Mensual';
   resultadoVisible: boolean = false;
   loading: boolean = false;
-  
-  // Resultados del cálculo (ajustados a los valores de la imagen)
+
+  // Resultados del cálculo
   resultado = {
-    valorCuota: 0,
+    valorCuota: 0,        // cuota mensual = capital / n
+    cuotaInicial: 0,      // pago inicial = aval+gastos + intereses
+    desembolsoNeto: 0,    // valor venta - cuota inicial
     totalIntereses: 0,
-    porcentajeAval: 13, // 13% como en la imagen
-    ivaAval: 0, // IVA del 19% sobre el aval
-    totalAval: 0,
-    totalCredito: 0,
+    porcentajeAval: 12,   // 12% del capital
+    ivaAval: 0,           // IVA 19% sobre el aval
+    totalAval: 0,         // aval + IVA (12% * 1.19)
+    totalCredito: 0,      // total a pagar
     tablaAmortizacion: [] as any[],
-    tasaInteres: 1.91 // 1.91% mensual como en la imagen
+    tasaInteres: 2.06     // 2.06% mensual
   };
 
   calcularCredito() {
@@ -76,55 +78,60 @@ export class SimuladorDeCreditoComponent  {
   }
 
   private realizarCalculo() {
-    const tasaInteresMensual = this.resultado.tasaInteres / 100;
-    const valorSolicitado = this.valorSolicitado!;
+    const tasaInteresMensual = this.resultado.tasaInteres / 100; // 1.96%
+    const capital = this.valorSolicitado!;
     const numeroCuotas = this.cuotas;
-    
-    // Cálculo de la cuota usando la fórmula de cuota fija
-    const valorCuota = this.calcularCuotaFija(valorSolicitado, tasaInteresMensual, numeroCuotas);
-    
-    // Calcular intereses totales
-    const interesesTotales = (valorCuota * numeroCuotas) - valorSolicitado;
-    
-    // Calcular aval (13% del valor solicitado + IVA 19%)
-    const valorAvalSinIva = valorSolicitado * (this.resultado.porcentajeAval / 100);
+
+    // ── Intereses: amortización francesa (cuota fija) sobre el capital ──
+    const cuotaAmortizada = this.calcularCuotaFija(capital, tasaInteresMensual, numeroCuotas);
+    const interesesTotales = Math.round((cuotaAmortizada * numeroCuotas) - capital);
+
+    // ── Aval + gastos = 12% del capital + IVA 19% sobre el aval ──
+    const valorAvalSinIva = capital * (this.resultado.porcentajeAval / 100); // 12%
     const ivaAval = valorAvalSinIva * 0.19;
-    const totalAval = valorAvalSinIva + ivaAval;
-    
-    // Generar tabla de amortización
-    let saldo = valorSolicitado;
+    const totalAval = Math.round(valorAvalSinIva + ivaAval); // 12% * 1.19 = 14.28%
+
+    // ── Cuota inicial (pago upfront) = aval+gastos + intereses ──
+    const cuotaInicial = totalAval + interesesTotales;
+
+    // ── Valor cuota mensual = capital repartido en n cuotas ──
+    const valorCuota = Math.round(capital / numeroCuotas);
+
+    // ── Total a pagar = capital + aval+gastos + intereses ──
+    const totalCredito = capital + totalAval + interesesTotales;
+
+    // ── Tabla amortización (interés sobre saldo decreciente, informativa) ──
+    let saldo = capital;
     const tabla = [];
-    
     for (let i = 1; i <= numeroCuotas; i++) {
       const interesPeriodo = saldo * tasaInteresMensual;
-      const abonoCapital = valorCuota - interesPeriodo;
-      
+      const abonoCapital = cuotaAmortizada - interesPeriodo;
       tabla.push({
         periodo: i,
-        cuota: valorCuota,
+        cuota: cuotaAmortizada,
         capital: abonoCapital,
         interes: interesPeriodo,
         saldo: saldo - abonoCapital
       });
-      
       saldo -= abonoCapital;
     }
 
-    // Guardar resultados
     this.resultado = {
       ...this.resultado,
       valorCuota: valorCuota,
+      cuotaInicial: cuotaInicial,
+      desembolsoNeto: capital - cuotaInicial,
       totalIntereses: interesesTotales,
-      ivaAval: ivaAval,
+      ivaAval: Math.round(ivaAval),
       totalAval: totalAval,
-      totalCredito: (valorCuota * numeroCuotas) + totalAval,
+      totalCredito: totalCredito,
       tablaAmortizacion: tabla
     };
 
-    this.cal()
+    this.cal();
   }
 
-  // Método para calcular la cuota fija usando la fórmula de anualidad
+  // Cuota fija amortización francesa
   private calcularCuotaFija(valorPrestamo: number, tasaInteres: number, numeroCuotas: number): number {
     const factor = Math.pow(1 + tasaInteres, numeroCuotas);
     return valorPrestamo * (tasaInteres * factor) / (factor - 1);
@@ -140,25 +147,26 @@ export class SimuladorDeCreditoComponent  {
   }
 
   resetearSimulador() {
-    this.valorSolicitado = 1000000; // Restablecer al valor de ejemplo
-    this.cuotas = 6;
+    this.valorSolicitado = 510000;
+    this.cuotas = 3;
     this.plazo = 'Mensual';
     this.resultadoVisible = false;
   }
 
 
+  // Cuotas mensuales = capital repartido en n (sin intereses, ya cobrados en cuota inicial)
   cal() {
     this.cuotasPromedioAjustadas = [];
-    const total = this.resultado.totalCredito!;
-    const promedioAproximado = Math.floor(total / this.cuotas);
+    const capital = this.valorSolicitado!;
+    const base = Math.floor(capital / this.cuotas);
     let acumulado = 0;
-  
+
     for (let i = 1; i <= this.cuotas; i++) {
       if (i < this.cuotas) {
-        this.cuotasPromedioAjustadas.push(promedioAproximado);
-        acumulado += promedioAproximado;
+        this.cuotasPromedioAjustadas.push(base);
+        acumulado += base;
       } else {
-        this.cuotasPromedioAjustadas.push(Math.round(total - acumulado));
+        this.cuotasPromedioAjustadas.push(Math.round(capital - acumulado));
       }
     }
   }

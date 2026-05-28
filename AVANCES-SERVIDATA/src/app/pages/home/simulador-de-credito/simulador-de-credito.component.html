@@ -103,16 +103,33 @@
 
             <div class="results-grid">
               <div class="result-item">
-                <span class="result-item__label">Valor mensual</span>
-                <span class="result-item__value result-item__value--primary">{{ formatearNumero(resultado.totalCredito /
-                  cuotas) }}</span>
+                <span class="result-item__label">Valor de la venta</span>
+                <span class="result-item__value">{{ formatearNumero(valorSolicitado || 0) }}</span>
+              </div>
+              <div class="result-item">
+                <span class="result-item__label">Valor de la cuota</span>
+                <span class="result-item__value result-item__value--primary">{{ formatearNumero(resultado.valorCuota)
+                  }}</span>
+              </div>
+              <div class="result-item">
+                <span class="result-item__label">Cuota inicial</span>
+                <span class="result-item__value result-item__value--primary">{{ formatearNumero(resultado.cuotaInicial)
+                  }}</span>
+              </div>
+              <div class="result-item">
+                <span class="result-item__label">N. cuotas</span>
+                <span class="result-item__value">{{ cuotas }}</span>
+              </div>
+              <div class="result-item">
+                <span class="result-item__label">Tasa de interés</span>
+                <span class="result-item__value">{{ resultado.tasaInteres }}%</span>
               </div>
               <div class="result-item">
                 <span class="result-item__label">Total intereses</span>
                 <span class="result-item__value">{{ formatearNumero(resultado.totalIntereses) }}</span>
               </div>
               <div class="result-item">
-                <span class="result-item__label">Total aval + IVA</span>
+                <span class="result-item__label">Total gastos plataforma financiera</span>
                 <span class="result-item__value">{{ formatearNumero(resultado.totalAval) }}</span>
               </div>
               <div class="result-item result-item--total">
@@ -120,13 +137,18 @@
                 <span class="result-item__value result-item__value--featured">{{ formatearNumero(resultado.totalCredito)
                   }}</span>
               </div>
+              <div class="result-item result-item--total">
+                <span class="result-item__label">Desembolso neto</span>
+                <span class="result-item__value result-item__value--featured">{{ formatearNumero(resultado.desembolsoNeto)
+                  }}</span>
+              </div>
             </div>
 
-            <!-- Tabla cuotas promedio -->
+            <!-- Tabla cuotas mensuales -->
             <div class="amort-table" *ngIf="cuotasPromedioAjustadas.length > 0">
               <div class="amort-table__header">
                 <i class="pi pi-table"></i>
-                <span>Cuotas promedio ajustadas</span>
+                <span>Cuotas mensuales</span>
               </div>
               <table>
                 <thead>
