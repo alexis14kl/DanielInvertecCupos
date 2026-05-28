@@ -151,7 +151,7 @@ export class WelcomeComponent implements OnInit, AfterViewInit, OnDestroy {
     }
     this.slides[0] = {
       id: 0,
-      src: 'assets/images/home/AVANCES-SERVIDATA-img00.jpeg',
+      src: 'assets/images/home/slide-aliados.jpeg',
       title: 'Crédito rápido y efectivo',
       subtitle: 'Con INVERSIONESJOG.CO accede de forma ágil y segura al financiamiento que necesitas, gracias a nuestras alianzas con addi, sistecrédito y vanti.'
     };
