@@ -6,7 +6,8 @@
       "Bash(mkdir -p C:/laragon/www/QA/DanielInvertecCupos/AVANCES-SERVIDATA/src/assets/images/aliados)",
       "Bash(curl -sLo transunion.svg \"https://upload.wikimedia.org/wikipedia/commons/b/ba/TransUnion_logo.svg\")",
       "Bash(curl -sLo vanti.svg \"https://iconape.com/wp-content/files/jm/196636/svg/196636.svg\")",
-      "Bash(curl -sLo vanti-fallback.png \"https://iconape.com/wp-content/png_logo_vector/vanti-logo.png\")"
+      "Bash(curl -sLo vanti-fallback.png \"https://iconape.com/wp-content/png_logo_vector/vanti-logo.png\")",
+      "Bash(npm run *)"
     ]
   }
 }
