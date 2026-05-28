@@ -1,118 +1,126 @@
 <!-- HEADER SHELL: agrupa utility-bar + header en un solo contenedor fijo -->
 <div class="header-shell">
-<!-- TOP UTILITY BAR — info empresa + redes (desktop only) -->
-<div class="top-utility-bar hidden lg:block">
-    <span class="utility-glow" aria-hidden="true"></span>
-    <div class="w-full max-w-[1920px] mx-auto px-4 sm:px-6 lg:px-12 xl:px-24">
-        <div class="flex items-center justify-between h-9">
-            <!-- LEFT: Contact info -->
-            <div class="flex items-center gap-5">
-                <a href="tel:+573103248752" class="util-link" aria-label="Llamar">
-                    <i class="pi pi-phone"></i>
-                    <span>+57 310 324 8752</span>
-                </a>
-                <span class="util-divider" aria-hidden="true"></span>
-                <a href="mailto:otonielgomez921@gmail.com" class="util-link" aria-label="Enviar correo">
-                    <i class="pi pi-envelope"></i>
-                    <span>otonielgomez921&#64;gmail.com</span>
-                </a>
-                <span class="util-divider" aria-hidden="true"></span>
-                <span class="util-link util-link--static">
-                    <i class="pi pi-map-marker"></i>
-                    <span>Bogotá, Colombia</span>
-                </span>
-            </div>
-
-            <!-- CENTER: Promo rotativa -->
-            <div class="hidden xl:flex flex-1 items-center justify-end mx-8 overflow-hidden relative" aria-label="Promociones del mes" aria-live="polite">
-                <span class="promo-text text-right" [class.promo-text--hidden]="!promoVisible()" [innerHTML]="promos()[currentPromoIndex()]"></span>
-            </div>
-
-            <!-- RIGHT: WhatsApp -->
-            <div class="flex items-center gap-3">
-                <a href="https://wa.me/573103248752" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp principal" class="util-wa">
-                    <i class="pi pi-whatsapp"></i>
-                    <span class="hidden xl:inline">310 324 8752</span>
-                </a>
-                <span class="util-divider util-divider--soft" aria-hidden="true"></span>
-                <a href="https://wa.me/573143020480" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp secundario" class="util-wa">
-                    <i class="pi pi-whatsapp"></i>
-                    <span class="hidden xl:inline">314 302 0480</span>
-                </a>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- HEADER -->
-<header class="site-header">
-    <div class="w-full max-w-[1920px] mx-auto px-6 lg:px-12 xl:px-24">
-        <div class="flex items-center justify-between gap-6 h-[78px]">
-            <!-- Brand -->
-            <a routerLink="/index" class="brand-block group" aria-label="Inicio - InverteCupos">
-                <span class="brand-logo">
-                    <img src="assets/images/home/logoApp.jpeg" alt="" />
-                </span>
-                <span class="hidden sm:flex flex-col">
-                    <span class="brand-name">INVERTEC<span class="brand-name__accent">CUPOS</span></span>
-                    <span class="brand-tag">Avances · Cupos · Crédito</span>
-                </span>
-            </a>
-
-            <!-- Mobile trigger -->
-            <p-button class="md:hidden" icon="pi pi-bars" (click)="visible = true" styleClass="mobile-trigger" aria-label="Abrir menú"></p-button>
-
-            <!-- Desktop nav -->
-            <nav class="hidden md:flex items-center gap-1" aria-label="Principal">
-                <a routerLink="/index" routerLinkActive="nav-link--active" [routerLinkActiveOptions]="{exact: true}" class="nav-link">
-                    <span>Inicio</span>
-                </a>
-                <a routerLink="/index/Info-Sistecredito-addi" routerLinkActive="nav-link--active" class="nav-link">
-                    <span>Addi / Sistecrédito por efectivo</span>
-                </a>
-                <a routerLink="/index/Simulador-De-credito" routerLinkActive="nav-link--active" class="nav-link">
-                    <span>Simulador de Crédito</span>
-                </a>
-
-                <c-dropdown alignment="end">
-                    <a style="cursor: pointer;" cDropdownToggle cNavLink class="nav-link nav-link--toggle">
-                        <span>Más opciones</span>
-                        <i class="pi pi-chevron-down"></i>
+    <!-- TOP UTILITY BAR — info empresa + redes (desktop only) -->
+    <div class="top-utility-bar hidden lg:block">
+        <span class="utility-glow" aria-hidden="true"></span>
+        <div class="w-full max-w-[1920px] mx-auto px-4 sm:px-6 lg:px-12 xl:px-24">
+            <div class="flex items-center justify-between h-9">
+                <!-- LEFT: Contact info -->
+                <div class="flex items-center gap-5">
+                    <a href="tel:+573103248752" class="util-link" aria-label="Llamar">
+                        <i class="pi pi-phone"></i>
+                        <span>+57 310 324 8752</span>
                     </a>
-                    <ul cDropdownMenu class="dropdown-pro">
-                        <li>
-                            <a routerLink="/index" fragment="servicios" class="dropdown-pro__item" (click)="visible = false" cDropdownItem>
-                                <i class="pi pi-briefcase"></i>
-                                <span>Servicios</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a routerLink="/index" fragment="nosotros" class="dropdown-pro__item" (click)="visible = false" cDropdownItem>
-                                <i class="pi pi-users"></i>
-                                <span>Nosotros</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a routerLink="/index/faq" cDropdownItem class="dropdown-pro__item">
-                                <i class="pi pi-question-circle"></i>
-                                <span>Preguntas Frecuentes</span>
-                            </a>
-                        </li>
-                    </ul>
-                </c-dropdown>
+                    <span class="util-divider" aria-hidden="true"></span>
+                    <a href="mailto:otonielgomez921@gmail.com" class="util-link" aria-label="Enviar correo">
+                        <i class="pi pi-envelope"></i>
+                        <span>otonielgomez921&#64;gmail.com</span>
+                    </a>
+                    <span class="util-divider" aria-hidden="true"></span>
+                    <span class="util-link util-link--static">
+                        <i class="pi pi-map-marker"></i>
+                        <span>Bogotá, Colombia</span>
+                    </span>
+                </div>
 
-                <a routerLink="/index/contacto" rel="noopener noreferrer" class="ml-3">
-                    <button type="button" class="cta-pro">
-                        <span class="cta-pro__shimmer" aria-hidden="true"></span>
-                        <span class="cta-pro__label">Iniciar Solicitud</span>
-                        <i class="pi pi-arrow-right cta-pro__icon"></i>
-                    </button>
-                </a>
-            </nav>
+                <!-- CENTER: Promo rotativa -->
+                <div class="hidden xl:flex flex-1 items-center justify-end mx-8 overflow-hidden relative"
+                    aria-label="Promociones del mes" aria-live="polite">
+                    <span class="promo-text text-right" [class.promo-text--hidden]="!promoVisible()"
+                        [innerHTML]="promos()[currentPromoIndex()]"></span>
+                </div>
+
+                <!-- RIGHT: WhatsApp -->
+                <div class="flex items-center gap-3">
+                    <a href="https://wa.me/573103248752" target="_blank" rel="noopener noreferrer"
+                        aria-label="WhatsApp principal" class="util-wa">
+                        <i class="pi pi-whatsapp"></i>
+                        <span class="hidden xl:inline">310 324 8752</span>
+                    </a>
+                    <span class="util-divider util-divider--soft" aria-hidden="true"></span>
+                    <a href="https://wa.me/573143020480" target="_blank" rel="noopener noreferrer"
+                        aria-label="WhatsApp secundario" class="util-wa">
+                        <i class="pi pi-whatsapp"></i>
+                        <span class="hidden xl:inline">314 302 0480</span>
+                    </a>
+                </div>
+            </div>
         </div>
     </div>
-    <span class="header-strip" aria-hidden="true"></span>
-</header>
+
+    <!-- HEADER -->
+    <header class="site-header">
+        <div class="w-full max-w-[1920px] mx-auto px-6 lg:px-12 xl:px-24">
+            <div class="flex items-center justify-between gap-6 h-[78px]">
+                <!-- Brand -->
+                <a routerLink="/index" class="brand-block group" aria-label="Inicio - InverteCupos">
+                    <span class="brand-logo">
+                        <img src="assets/images/home/logoApp.jpeg" alt="" />
+                    </span>
+                    <span class="hidden sm:flex flex-col">
+                        <span class="brand-name">INVERSIONESJOG<span class="brand-name__accent">.CO</span></span>
+                        <span class="brand-tag">Avances · Cupos · Crédito · Data</span>
+                    </span>
+                </a>
+
+                <!-- Mobile trigger -->
+                <p-button class="md:hidden" icon="pi pi-bars" (click)="visible = true" styleClass="mobile-trigger"
+                    aria-label="Abrir menú"></p-button>
+
+                <!-- Desktop nav -->
+                <nav class="hidden md:flex items-center gap-1" aria-label="Principal">
+                    <a routerLink="/index" routerLinkActive="nav-link--active" [routerLinkActiveOptions]="{exact: true}"
+                        class="nav-link">
+                        <span>Inicio</span>
+                    </a>
+                    <a routerLink="/index/Info-Sistecredito-addi" routerLinkActive="nav-link--active" class="nav-link">
+                        <span>Addi / Sistecrédito por efectivo</span>
+                    </a>
+                    <a routerLink="/index/Simulador-De-credito" routerLinkActive="nav-link--active" class="nav-link">
+                        <span>Simulador de Crédito</span>
+                    </a>
+
+                    <c-dropdown alignment="end">
+                        <a style="cursor: pointer;" cDropdownToggle cNavLink class="nav-link nav-link--toggle">
+                            <span>Más opciones</span>
+                            <i class="pi pi-chevron-down"></i>
+                        </a>
+                        <ul cDropdownMenu class="dropdown-pro">
+                            <li>
+                                <a routerLink="/index" fragment="servicios" class="dropdown-pro__item"
+                                    (click)="visible = false" cDropdownItem>
+                                    <i class="pi pi-briefcase"></i>
+                                    <span>Servicios</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a routerLink="/index" fragment="nosotros" class="dropdown-pro__item"
+                                    (click)="visible = false" cDropdownItem>
+                                    <i class="pi pi-users"></i>
+                                    <span>Nosotros</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a routerLink="/index/faq" cDropdownItem class="dropdown-pro__item">
+                                    <i class="pi pi-question-circle"></i>
+                                    <span>Preguntas Frecuentes</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </c-dropdown>
+
+                    <a routerLink="/index/contacto" rel="noopener noreferrer" class="ml-3">
+                        <button type="button" class="cta-pro">
+                            <span class="cta-pro__shimmer" aria-hidden="true"></span>
+                            <span class="cta-pro__label">Iniciar Solicitud</span>
+                            <i class="pi pi-arrow-right cta-pro__icon"></i>
+                        </button>
+                    </a>
+                </nav>
+            </div>
+        </div>
+        <span class="header-strip" aria-hidden="true"></span>
+    </header>
 </div><!-- /.header-shell -->
 
 <!-- Spacer en flow para reservar la altura de la utility-bar + header fijos -->
@@ -125,7 +133,7 @@
             <img src="assets/images/home/logoApp.jpeg" alt="" />
         </span>
         <div>
-            <span class="drawer-brand__name">INVERTECCUPOS</span>
+            <span class="drawer-brand__name">INVERSIONESJOG.CO</span>
             <span class="drawer-brand__tag">Avances · Cupos · Crédito</span>
         </div>
     </div>

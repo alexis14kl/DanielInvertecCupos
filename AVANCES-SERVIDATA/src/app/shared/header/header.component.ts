@@ -42,7 +42,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     `Cambia tu cupo <strong class="promo-accent">Sistecredito</strong> por <strong>efectivo</strong> al instante`,
     `Convierte tu cupo <strong class="promo-accent">Addi</strong> en <strong>efectivo</strong> rapido y seguro`,
     `Consultas <strong class="promo-accent">DataCredito</strong> y <strong>CIFIN</strong> en linea`,
-    `Avances con <strong class="promo-accent">Su+ Pay</strong> y <strong>Vanti</strong> 100% seguro`,
+    `Avances con <strong class="promo-accent">Vanti</strong> 100% seguro y confiable`,
     `<strong class="promo-accent">Ya estamos en linea!</strong> Atencion inmediata por WhatsApp`,
   ]);
   protected currentPromoIndex = signal(0);

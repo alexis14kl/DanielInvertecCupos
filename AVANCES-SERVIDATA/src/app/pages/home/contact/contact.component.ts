@@ -123,7 +123,7 @@ export class ContactComponent {
       })
       .catch((error) => {
         console.error('Error al enviar el correo:', error);
-        alert('Hubo un error al enviar tu mensaje. Inténtalo nuevamente o contacta a inverteccupos.');
+        alert('Hubo un error al enviar tu mensaje. Inténtalo nuevamente o contacta a INVERSIONESJOG.CO.');
       });
   }
 }

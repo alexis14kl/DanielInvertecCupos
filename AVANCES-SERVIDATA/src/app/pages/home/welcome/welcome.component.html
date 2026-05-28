@@ -1,92 +1,94 @@
 <app-header></app-header>
 <section class="hero-particles-section">
-  <canvas #heroCanvas class="hero-particles-canvas"></canvas>
-  <div class="hero-particles-vignette"></div>
-  <div class="hero-particles-content" pAnimateOnScroll enterClass="animate-enter fade-in-10 slide-in-from-t-20 animate-duration-1000">
-    <c-carousel *ngIf="carouselReady" [dark]="true" [wrap]="false" [interval]="carouselInterval">
-        <!-- Indicadores de carrusel -->
-        <c-carousel-indicators></c-carousel-indicators>
+    <canvas #heroCanvas class="hero-particles-canvas"></canvas>
+    <div class="hero-particles-vignette"></div>
+    <div class="hero-particles-content" pAnimateOnScroll
+        enterClass="animate-enter fade-in-10 slide-in-from-t-20 animate-duration-1000">
+        <c-carousel *ngIf="carouselReady" [dark]="true" [wrap]="false" [interval]="carouselInterval">
+            <!-- Indicadores de carrusel -->
+            <c-carousel-indicators></c-carousel-indicators>
 
-        <!-- Contenido del carrusel -->
-        <c-carousel-inner>
-            <c-carousel-item *ngFor="let slide of slides; let i = index" [active]="i === currentIndex">
-                <!-- Contenedor de cada slide — altura fija para evitar layout shift con canvas particle -->
-                <div class="slide-fixed-container relative flex flex-col md:flex-row w-full overflow-hidden rounded-xl shadow-2xl group">
+            <!-- Contenido del carrusel -->
+            <c-carousel-inner>
+                <c-carousel-item *ngFor="let slide of slides; let i = index" [active]="i === currentIndex">
+                    <!-- Contenedor de cada slide — altura fija para evitar layout shift con canvas particle -->
+                    <div
+                        class="slide-fixed-container relative flex flex-col md:flex-row w-full overflow-hidden rounded-xl shadow-2xl group">
 
-                    <!-- Descripción sin fondo azul, similar al ejemplo de PrimeNG -->
-                    <div class="p-6 md:p-8 flex-1 text-[#2240B1] bg-white flex flex-col justify-center overflow-hidden">
-                        <h2 class="responsive-title text-center text-2xl sm:text-3xl md:text-4xl font-bold mb-2 drop-shadow-lg animate-fade-in" style="text-transform: uppercase;">
-                            {{ slide.title }}
-                        </h2>
-                        <p class="responsive-subtitle text-center mb-6 text-base sm:text-lg md:text-xl opacity-90 drop-shadow-md animate-fade-in-delay">
-                            {{ slide.subtitle }}
-                        </p>
+                        <!-- Descripción sin fondo azul, similar al ejemplo de PrimeNG -->
+                        <div
+                            class="p-6 md:p-8 flex-1 text-[#2240B1] bg-white flex flex-col justify-center overflow-hidden">
+                            <h2 class="responsive-title text-center text-2xl sm:text-3xl md:text-4xl font-bold mb-2 drop-shadow-lg animate-fade-in"
+                                style="text-transform: uppercase;">
+                                {{ slide.title }}
+                            </h2>
+                            <p
+                                class="responsive-subtitle text-center mb-6 text-base sm:text-lg md:text-xl opacity-90 drop-shadow-md animate-fade-in-delay">
+                                {{ slide.subtitle }}
+                            </p>
 
-                        <a routerLink="/index/contacto" class="modern-btn inline-block mx-auto">
-                            <span class="btn-text">Solicitar YA</span>
-                            <span class="btn-icon">
-              <i class="pi pi-arrow-right"></i>
-            </span>
-                        </a>
+                            <a routerLink="/index/contacto" class="modern-btn inline-block mx-auto">
+                                <span class="btn-text">Solicitar YA</span>
+                                <span class="btn-icon">
+                                    <i class="pi pi-arrow-right"></i>
+                                </span>
+                            </a>
+                        </div>
+
+                        <!-- Imagen — flex-1 + h-full hereda altura fija del padre -->
+                        <div class="flex-1 flex items-center justify-center bg-white p-4 md:p-6 h-full overflow-hidden">
+                            <img loading="lazy" [src]="slide.src" [alt]="slide.title"
+                                class="max-h-full max-w-full object-contain transition-transform duration-500" />
+                        </div>
+
                     </div>
+                </c-carousel-item>
+            </c-carousel-inner>
 
-                    <!-- Imagen — flex-1 + h-full hereda altura fija del padre -->
-                    <div class="flex-1 flex items-center justify-center bg-white p-4 md:p-6 h-full overflow-hidden">
-                        <img loading="lazy" [src]="slide.src" [alt]="slide.title" class="max-h-full max-w-full object-contain transition-transform duration-500" />
-                    </div>
-
-                </div>
-            </c-carousel-item>
-        </c-carousel-inner>
-
-        <!-- Controles de navegación -->
-        <c-carousel-control [routerLink] caption="Previous" direction="prev" class="text-white hover:bg-gray-700 rounded-full p-2 bg-opacity-50" />
-        <c-carousel-control [routerLink] caption="Next" direction="next" class="text-white hover:bg-gray-700 rounded-full p-2 bg-opacity-50" />
-    </c-carousel>
-  </div>
+            <!-- Controles de navegación -->
+            <c-carousel-control [routerLink] caption="Previous" direction="prev"
+                class="text-white hover:bg-gray-700 rounded-full p-2 bg-opacity-50" />
+            <c-carousel-control [routerLink] caption="Next" direction="next"
+                class="text-white hover:bg-gray-700 rounded-full p-2 bg-opacity-50" />
+        </c-carousel>
+    </div>
 </section>
 
 
 <!-- ─── ALIADOS — domino cards 3D con logos reales ─── -->
 <section class="aliados-domino">
-  <div class="aliados-domino__grid">
-    <div class="aliado-tile">
-      <div class="aliado-tile__icon aliado-tile__icon--brand">
-        <img src="assets/images/aliados/addi.png" alt="Addi" loading="lazy" />
-      </div>
-      <span class="aliado-tile__label">Addi</span>
+    <div class="aliados-domino__grid">
+        <div class="aliado-tile">
+            <div class="aliado-tile__icon aliado-tile__icon--brand">
+                <img src="assets/images/aliados/addi.png" alt="Addi" loading="lazy" />
+            </div>
+            <span class="aliado-tile__label">Addi</span>
+        </div>
+        <div class="aliado-tile">
+            <div class="aliado-tile__icon aliado-tile__icon--brand">
+                <img src="assets/images/aliados/sistecredito.png" alt="Sistecrédito" loading="lazy" />
+            </div>
+            <span class="aliado-tile__label">Sistecrédito</span>
+        </div>
+        <div class="aliado-tile">
+            <div class="aliado-tile__icon aliado-tile__icon--brand">
+                <img src="assets/images/aliados/vanti.svg" alt="Vanti" loading="lazy" />
+            </div>
+            <span class="aliado-tile__label">Vanti</span>
+        </div>
+        <div class="aliado-tile">
+            <div class="aliado-tile__icon aliado-tile__icon--brand">
+                <img src="assets/images/aliados/datacredito.png" alt="DataCrédito" loading="lazy" />
+            </div>
+            <span class="aliado-tile__label">DataCrédito</span>
+        </div>
+        <div class="aliado-tile">
+            <div class="aliado-tile__icon aliado-tile__icon--brand">
+                <img src="assets/images/aliados/transunion.png" alt="TransUnion (CIFIN)" loading="lazy" />
+            </div>
+            <span class="aliado-tile__label">CIFIN</span>
+        </div>
     </div>
-    <div class="aliado-tile">
-      <div class="aliado-tile__icon aliado-tile__icon--brand">
-        <img src="assets/images/aliados/sistecredito.png" alt="Sistecrédito" loading="lazy" />
-      </div>
-      <span class="aliado-tile__label">Sistecrédito</span>
-    </div>
-    <div class="aliado-tile">
-      <div class="aliado-tile__icon aliado-tile__icon--brand">
-        <img src="assets/images/aliados/supay.png" alt="Su+ Pay" loading="lazy" />
-      </div>
-      <span class="aliado-tile__label">Su+ Pay</span>
-    </div>
-    <div class="aliado-tile">
-      <div class="aliado-tile__icon aliado-tile__icon--brand">
-        <img src="assets/images/aliados/vanti.svg" alt="Vanti" loading="lazy" />
-      </div>
-      <span class="aliado-tile__label">Vanti</span>
-    </div>
-    <div class="aliado-tile">
-      <div class="aliado-tile__icon aliado-tile__icon--brand">
-        <img src="assets/images/aliados/datacredito.png" alt="DataCrédito" loading="lazy" />
-      </div>
-      <span class="aliado-tile__label">DataCrédito</span>
-    </div>
-    <div class="aliado-tile">
-      <div class="aliado-tile__icon aliado-tile__icon--brand">
-        <img src="assets/images/aliados/transunion.png" alt="TransUnion (CIFIN)" loading="lazy" />
-      </div>
-      <span class="aliado-tile__label">CIFIN</span>
-    </div>
-  </div>
 </section>
 
 
@@ -127,15 +129,16 @@
                 </div>
                 <div class="solution-card__body">
                     <p class="solution-card__desc">
-                        Cupos disponibles y preaprobados en efectivo y productos tecnologicos con disponibilidad inmediata y sin tramites complicados.
+                        Cupos disponibles y preaprobados en efectivo y productos tecnologicos con disponibilidad
+                        inmediata y sin tramites complicados.
                     </p>
                     <div class="solution-card__highlight">
-                        <strong>Cupo minimo:</strong> desde $300.000 y preaprobados hasta $3.000.000 COP
+                        <strong>Cupo minimo:</strong> desde $500.000 y preaprobados hasta $3.000.000 COP
                     </div>
                     <ul class="solution-card__list">
                         <li><i class="pi pi-check-circle"></i> Aprobacion en minutos</li>
                         <li><i class="pi pi-check-circle"></i> Entrega inmediata</li>
-                        <li><i class="pi pi-check-circle"></i> Transferencia Nequi / Daviplata</li>
+                        <li><i class="pi pi-check-circle"></i> Transferencia Nequi / Daviplata / Bre-b</li>
                         <li><i class="pi pi-check-circle"></i> Presencial o virtual</li>
                     </ul>
                 </div>
@@ -154,12 +157,13 @@
                 </div>
                 <div class="solution-card__body">
                     <p class="solution-card__desc">
-                        Cupos en efectivo y productos de tecnologia con aprobacion rapida y proceso <strong class="text-cyan">100%</strong> seguro.
+                        Cupos en efectivo y productos de tecnologia con aprobacion rapida y proceso <strong
+                            class="text-cyan">100%</strong> seguro.
                     </p>
                     <ul class="solution-card__list">
                         <li><i class="pi pi-check-circle"></i> Aprobacion en minutos</li>
                         <li><i class="pi pi-check-circle"></i> Entrega inmediata</li>
-                        <li><i class="pi pi-check-circle"></i> Transferencia Nequi / Daviplata</li>
+                        <li><i class="pi pi-check-circle"></i> Transferencia Nequi / Daviplata / Bre-b</li>
                         <li><i class="pi pi-check-circle"></i> Presencial o virtual</li>
                     </ul>
                 </div>
@@ -173,14 +177,15 @@
                 </div>
                 <div class="solution-card__header">
                     <span class="solution-card__badge">Consulta crediticia</span>
-                    <h3 class="solution-card__title">DataCredito y CIFIN</h3>
+                    <h3 class="solution-card__title">DataCredito y CIFIN a patir de 18 mil pesos</h3>
                 </div>
                 <div class="solution-card__body">
                     <p class="solution-card__desc">
-                        Historial crediticio, sintesis, reconocer+, completo y personas juridicas, linea economica y experian.
+                        Historial crediticio, sintesis, reconocer+, completo y personas juridicas, linea economica y
+                        experian.
                     </p>
                     <div class="solution-card__highlight">
-                        <strong>Desde $16.000 COP</strong> segun tipo de consulta
+                        <strong>Desde $18.000 COP</strong> segun tipo de consulta
                     </div>
                     <ul class="solution-card__list">
                         <li><i class="pi pi-check-circle"></i> Resultados al instante</li>
@@ -225,7 +230,9 @@
                 <div class="service-tile__body">
                     <h3 class="service-tile__title">{{ service.title }}</h3>
                     <p class="service-tile__desc">{{ service.description }}</p>
-                    <a target="_blank" href="https://api.whatsapp.com/send/?phone=573103248752&text=Hola%2C+quiero+hacer+una+consulta&type=phone_number&app_absent=0" class="service-tile__cta">
+                    <a target="_blank"
+                        href="https://api.whatsapp.com/send/?phone=573103248752&text=Hola%2C+quiero+hacer+una+consulta&type=phone_number&app_absent=0"
+                        class="service-tile__cta">
                         <span>Solicitar ahora</span>
                         <i class="pi pi-arrow-right"></i>
                     </a>
@@ -243,14 +250,16 @@
                 </span>
                 <h3 class="cta-banner__title">Necesitas asesoria personalizada?</h3>
                 <p class="cta-banner__desc">
-                    Nuestros especialistas estan disponibles para resolver todas tus dudas sobre productos y servicios financieros.
+                    Nuestros especialistas estan disponibles para resolver todas tus dudas sobre productos y servicios
+                    financieros.
                 </p>
                 <div class="cta-banner__buttons">
                     <a href="https://api.whatsapp.com/send?phone=573103248752" target="_blank" class="cta-wa-btn">
                         <i class="pi pi-whatsapp"></i>
                         <span>WhatsApp 310 324 8752</span>
                     </a>
-                    <a href="https://api.whatsapp.com/send?phone=573143020480" target="_blank" class="cta-wa-btn cta-wa-btn--alt">
+                    <a href="https://api.whatsapp.com/send?phone=573143020480" target="_blank"
+                        class="cta-wa-btn cta-wa-btn--alt">
                         <i class="pi pi-whatsapp"></i>
                         <span>WhatsApp 314 302 0480</span>
                     </a>
@@ -285,29 +294,47 @@
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <div class="video-card">
                 <div class="video-card__strip"></div>
-                <video class="video-card__video" controls preload="metadata">
+                <video class="video-card__video" controls preload="none" poster="assets/images/home/poster-addi.jpeg">
                     <source src="assets/videos/home/Services/videoService00.mp4" type="video/mp4">
                     Tu navegador no soporta la reproduccion de video.
                 </video>
             </div>
             <div class="video-card">
                 <div class="video-card__strip"></div>
-                <video class="video-card__video" controls preload="metadata">
+                <video class="video-card__video" controls preload="none" poster="assets/images/home/poster-vanti.jpeg">
                     <source src="assets/videos/home/Services/videoService01.mp4" type="video/mp4">
                     Tu navegador no soporta la reproduccion de video.
                 </video>
             </div>
             <div class="video-card">
                 <div class="video-card__strip"></div>
-                <video class="video-card__video" controls preload="metadata">
+                <video class="video-card__video" controls preload="none"
+                    poster="assets/images/home/poster-sistecredito.jpeg">
                     <source src="assets/videos/home/Services/videoService02.mp4" type="video/mp4">
                     Tu navegador no soporta la reproduccion de video.
                 </video>
             </div>
             <div class="video-card">
                 <div class="video-card__strip"></div>
-                <video class="video-card__video" controls preload="metadata">
+                <video class="video-card__video" controls preload="none"
+                    poster="assets/images/home/poster-datacredito.jpeg">
                     <source src="assets/videos/home/Services/videoService03.mp4" type="video/mp4">
+                    Tu navegador no soporta la reproduccion de video.
+                </video>
+            </div>
+            <!-- Videos nuevos -->
+            <div class="video-card">
+                <div class="video-card__strip"></div>
+                <video class="video-card__video" controls preload="none" poster="assets/images/home/poster-addi.jpeg">
+                    <source src="assets/videos/home/Services/video-addi.mp4" type="video/mp4">
+                    Tu navegador no soporta la reproduccion de video.
+                </video>
+            </div>
+            <div class="video-card">
+                <div class="video-card__strip"></div>
+                <video class="video-card__video" controls preload="none"
+                    poster="assets/images/home/poster-aliados.jpeg">
+                    <source src="assets/videos/home/Services/video-addi2.mp4" type="video/mp4">
                     Tu navegador no soporta la reproduccion de video.
                 </video>
             </div>
@@ -329,7 +356,7 @@
                 Quienes Somos
             </span>
             <h2 class="premium-title">
-                Sobre <span class="premium-title__accent">Inverteccupos</span>
+                Sobre <span class="premium-title__accent">INVERSIONESJOG.CO</span>
             </h2>
             <div class="premium-divider"></div>
         </div>
@@ -337,14 +364,19 @@
         <!-- Intro narrativa -->
         <div class="nosotros-intro">
             <p>
-                En <strong>INVERTECCUPOS</strong> nos especializamos en ofrecer soluciones financieras accesibles y seguras. Nuestra mision es ayudarte a transformar tus cupos en efectivo o productos sin complicaciones.
+                En <strong>INVERSIONESJOG.CO</strong> nos especializamos en ofrecer soluciones financieras accesibles y
+                seguras. Nuestra mision es ayudarte a transformar tus cupos en efectivo o productos sin complicaciones.
             </p>
             <p>
-                Trabajamos con aliados de confianza como <strong>Addi</strong> y <strong>Sistecredito</strong> para brindarte la mejor experiencia.
+                Trabajamos con aliados de confianza como <strong>Addi</strong>, <strong>Sistecredito</strong> y
+                <strong>DataCrédito Experian</strong> para
+                brindarte la mejor experiencia.
             </p>
             <div class="nosotros-perk">
                 <i class="pi pi-gift"></i>
-                <span>A nuestros clientes mas fieles les ofrecemos un <strong>cupo rotativo adicional de hasta $1.000.000</strong>, pagadero en <strong>2 quincenas</strong>.</span>
+                <span>A nuestros clientes mas fieles de ADDI y SISTECREDITO les ofrecemos un <strong>cupo rotativo
+                        adicional de hasta
+                        $1.000.000</strong>, pagadero en <strong>3 Cuotas mensuales</strong>.</span>
             </div>
         </div>
 
@@ -356,7 +388,9 @@
                 <span class="about-card__number">01</span>
                 <h3 class="about-card__title">Mision</h3>
                 <p class="about-card__text">
-                    Brindar soluciones rapidas y confiables de financiamiento, facilitando el acceso a efectivo y productos a nuestros clientes de forma agil y segura, productos celulares y tecnologia con aliados comerciales ADDI, SISTECREDITO, VANTI, SU+ PAY y EXPERIAN.
+                    Brindar soluciones rapidas y confiables de financiamiento, facilitando el acceso a efectivo y
+                    productos a nuestros clientes de forma agil y segura, productos celulares y tecnologia con aliados
+                    comerciales ADDI, SISTECREDITO, VANTI, EXPERIAN.
                 </p>
             </article>
 
@@ -365,7 +399,8 @@
                 <span class="about-card__number">02</span>
                 <h3 class="about-card__title">Vision</h3>
                 <p class="about-card__text">
-                    Ser reconocidos como lideres en el canje de cupos en Colombia, ofreciendo servicios rapidos y personalizados, conectando a clientes y entidades financieras.
+                    Ser reconocidos como lideres en el canje de cupos en Colombia, ofreciendo servicios rapidos y
+                    personalizados, conectando a clientes y entidades financieras.
                 </p>
             </article>
 
@@ -386,7 +421,8 @@
                 <span class="about-card__number">04</span>
                 <h3 class="about-card__title">Nuestro Grupo</h3>
                 <p class="about-card__text">
-                    Formamos parte de un grupo de inversionistas que, junto con <strong>Sistecredito, Addi, Vanti y Su+ pay</strong>, permite acceder a cupos adicionales exclusivos.
+                    Formamos parte de un grupo de inversionistas que, junto con <strong>Sistecredito, Addi, Vanti y Su+
+                        pay</strong>, permite acceder a cupos adicionales exclusivos.
                 </p>
             </article>
 
@@ -395,7 +431,8 @@
                 <span class="about-card__number">05</span>
                 <h3 class="about-card__title">Nuestro Proposito</h3>
                 <p class="about-card__text">
-                    Transformar tus cupos disponibles en nuevas oportunidades: ya sea en efectivo o productos con un respaldo financiero para avanzar en tus proyectos personales o de negocio.
+                    Transformar tus cupos disponibles en nuevas oportunidades: ya sea en efectivo o productos con un
+                    respaldo financiero para avanzar en tus proyectos personales o de negocio.
                 </p>
             </article>
 

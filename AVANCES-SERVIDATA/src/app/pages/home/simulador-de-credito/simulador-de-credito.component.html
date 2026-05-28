@@ -44,11 +44,8 @@
               <i class="pi pi-dollar"></i>
               Valor solicitado <span class="field-label__hint">(COP)</span>
             </label>
-            <input id="valor" type="text"
-              [value]="formatearInput(valorSolicitado)"
-              (input)="actualizarValorSolicitado($event)"
-              placeholder="Ej: $1.000.000"
-              class="field-input">
+            <input id="valor" type="text" [value]="formatearInput(valorSolicitado)"
+              (input)="actualizarValorSolicitado($event)" placeholder="Ej: $1.000.000" class="field-input">
           </div>
 
           <!-- Numero cuotas -->
@@ -107,7 +104,8 @@
             <div class="results-grid">
               <div class="result-item">
                 <span class="result-item__label">Valor mensual</span>
-                <span class="result-item__value result-item__value--primary">{{ formatearNumero(resultado.totalCredito / cuotas) }}</span>
+                <span class="result-item__value result-item__value--primary">{{ formatearNumero(resultado.totalCredito /
+                  cuotas) }}</span>
               </div>
               <div class="result-item">
                 <span class="result-item__label">Total intereses</span>
@@ -119,7 +117,8 @@
               </div>
               <div class="result-item result-item--total">
                 <span class="result-item__label">Total a pagar</span>
-                <span class="result-item__value result-item__value--featured">{{ formatearNumero(resultado.totalCredito) }}</span>
+                <span class="result-item__value result-item__value--featured">{{ formatearNumero(resultado.totalCredito)
+                  }}</span>
               </div>
             </div>
 
@@ -155,7 +154,7 @@
         <div class="visual-panel__content">
           <span class="visual-panel__chip">
             <i class="pi pi-shield"></i>
-            Inverteccupos
+            INVERSIONESJOG.CO
           </span>
           <h3 class="visual-panel__title">
             Calcula <span class="visual-panel__accent">sin compromiso</span>
@@ -168,10 +167,11 @@
             <li><i class="pi pi-check-circle"></i> Tasas competitivas</li>
             <li><i class="pi pi-check-circle"></i> Resultado inmediato</li>
             <li><i class="pi pi-check-circle"></i> Sin papeleo</li>
-            <li><i class="pi pi-check-circle"></i> Pago Nequi / Daviplata</li>
+            <li><i class="pi pi-check-circle"></i> Pago Nequi / Daviplata / Bre b</li>
           </ul>
 
-          <a href="https://wa.me/573103248752?text=Hola%2C%20quiero%20simular%20mi%20credito" target="_blank" class="visual-panel__cta">
+          <a href="https://wa.me/573103248752?text=Hola%2C%20quiero%20simular%20mi%20credito" target="_blank"
+            class="visual-panel__cta">
             <i class="pi pi-whatsapp"></i>
             <span>Solicitar mi credito</span>
             <i class="pi pi-arrow-right"></i>

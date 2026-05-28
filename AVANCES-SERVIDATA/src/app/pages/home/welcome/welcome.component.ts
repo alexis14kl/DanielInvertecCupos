@@ -100,8 +100,8 @@ export class WelcomeComponent implements OnInit, AfterViewInit, OnDestroy {
       image: 'assets/images/home/services/Service03.jpeg'
     },
     {
-      title: 'Transacciones Nequi/Daviplata',
-      description: 'Recibe tu dinero directamente a Nequi o Bancolombia, daviplata o davivienda transferencias 100% seguras.',
+      title: 'Transacciones Nequi/Daviplata / Bre-b',
+      description: 'Recibe tu dinero directamente a Nequi o Bancolombia, daviplata / Bre-b o davivienda transferencias 100% seguras.',
       image: 'assets/images/home/services/Service04.JPEG'
     },
     {
@@ -131,15 +131,15 @@ export class WelcomeComponent implements OnInit, AfterViewInit, OnDestroy {
       image: 'assets/images/home/services/Service09.jpeg'
     }
   ];
-  
- 
+
+
   // Carousel usando Angular ui
   slides: any[] = new Array(3).fill({ id: -1, src: '', title: '', subtitle: '' });
   currentIndex = 0;
   carouselInterval = 3000;
   carouselReady = false;
 
-  constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
+  constructor(@Inject(PLATFORM_ID) private platformId: Object) { }
 
   ngOnInit() {
     this.currentIndex = 0;
@@ -153,26 +153,26 @@ export class WelcomeComponent implements OnInit, AfterViewInit, OnDestroy {
       id: 0,
       src: 'assets/images/home/AVANCES-SERVIDATA-img00.jpeg',
       title: 'Crédito rápido y efectivo',
-      subtitle: 'Con INVERTECCUPOS accede de forma ágil y segura al financiamiento que necesitas, gracias a nuestras alianzas con addi, sistecrédito, vanti y su+ pay.'
+      subtitle: 'Con INVERSIONESJOG.CO accede de forma ágil y segura al financiamiento que necesitas, gracias a nuestras alianzas con addi, sistecrédito y vanti.'
     };
 
     this.slides[1] = {
       id: 1,
-      src: 'assets/images/home/logoApp-1.png',
+      src: 'assets/images/home/logoApp.jpeg',
       title: 'Crédito rápido y efectivo',
-      subtitle: 'Con INVERTECCUPOS accede de forma ágil y segura al financiamiento que necesitas, gracias a nuestras alianzas con addi, sistecrédito, vanti y su+ pay.'
+      subtitle: 'Con INVERSIONESJOG.CO accede de forma ágil y segura al financiamiento que necesitas, gracias a nuestras alianzas con addi, sistecrédito y vanti.'
     };
-    
+
     this.slides[2] = {
       id: 2,
       src: 'assets/images/home/AVANCES-SERVIDATA-img01.jpeg',
       title: 'Crédito rápido y efectivo',
-      subtitle: 'En INVERTECCUPOS transformamos el sector financiero, facilitando el acceso al crédito y financiamiento con nuestras plataformas aliadas addi, sistecredito, vanti y su+ pay.'
+      subtitle: 'En INVERSIONESJOG.CO transformamos el sector financiero, facilitando el acceso al crédito y financiamiento con nuestras plataformas aliadas addi, sistecredito y vanti.'
     };
 
     this.slides[3] = {
       id: 3,
-      src: 'assets/images/home/AVANCES-SERVIDATA-img02.jpeg',
+      src: 'assets/images/home/slide-addi.jpeg',
       title: 'cambia tus cupos de sistecredito y addi al instante',
       subtitle: 'cupos en efectivo con tasas preferenciales las mejores tasas del mercado 💯 seguro'
     };
@@ -180,28 +180,28 @@ export class WelcomeComponent implements OnInit, AfterViewInit, OnDestroy {
       id: 4,
       src: 'assets/images/home/AVANCES-SERVIDATA-img03.jpeg',
       title: '¿Quieres ser nuestro aliado comercial?',
-      subtitle: 'Únete a cientos de comercios que ya disfrutan de nuestros servicios financieros rápidos y seguros con nuestras plataformas financieras addi, sistecredito, vanti y su+ pay.'
+      subtitle: 'Únete a cientos de comercios que ya disfrutan de nuestros servicios financieros rápidos y seguros con nuestras plataformas financieras addi, sistecredito y vanti.'
     };
 
     this.slides[5] = {
       id: 5,
       src: 'assets/images/home/AVANCES-SERVIDATA-img04.jpeg',
       title: 'Solicita tu cupo en efectivo',
-      subtitle: 'Accede a tu cupo en efectivo de manera fácil y rápida, sin papeleos ni complicaciones. ¡Disfruta de la libertad financiera que mereces hoy mismo con nuestras plataformas financieras addi, sistecredito, vanti y su+ pay.'
+      subtitle: 'Accede a tu cupo en efectivo de manera fácil y rápida, sin papeleos ni complicaciones. ¡Disfruta de la libertad financiera que mereces hoy mismo con nuestras plataformas financieras addi, sistecredito y vanti.'
     };
 
     this.slides[6] = {
       id: 6,
       src: 'assets/images/home/AVANCES-SERVIDATA-img05.jpeg',
       title: 'AVANCES RAPIDOS Y EFECTIVOS',
-      subtitle: 'Obtén tu cupo en efectivo de manera ágil, segura y sin trámites largos. Nosotros te facilitamos el acceso al dinero que necesitas para tus proyectos y necesidades con nuestras plataformas financieras addi, sistecredito, vanti y su+ pay.'
+      subtitle: 'Obtén tu cupo en efectivo de manera ágil, segura y sin trámites largos. Nosotros te facilitamos el acceso al dinero que necesitas para tus proyectos y necesidades con nuestras plataformas financieras addi, sistecredito y vanti.'
     };
 
     this.slides[7] = {
       id: 7,
       src: 'assets/images/home/AVANCES-SERVIDATA-img06.jpeg',
       title: '¡Haz efectivo tu cupo al instante!',
-      subtitle: 'En INVERTECCUPOS hacemos efectivo tu cupo disponible addi, sistecredito, vanti y su+ pay, Consultas a datacredito y cifin. 💯 seguro'
+      subtitle: 'En INVERSIONESJOG.CO hacemos efectivo tu cupo disponible addi, sistecredito y vanti, Consultas a datacredito y cifin. 💯 seguro'
     };
 
     this.slides[8] = {
@@ -213,30 +213,23 @@ export class WelcomeComponent implements OnInit, AfterViewInit, OnDestroy {
 
     this.slides[9] = {
       id: 9,
-      src: 'assets/images/home/AVANCES-SERVIDATA-img08.jpeg',
+      src: 'assets/images/home/slide-addi.jpeg',
       title: 'Solicita tu cupo en ADDI: https://co.addi.com/',
       subtitle: 'Nosotros te entregamos el dinero en efectivo o por transferencia.'
     };
-    
+
     this.slides[10] = {
       id: 10,
-      src: 'assets/images/home/AVANCES-SERVIDATA-img09.jpeg',
+      src: 'assets/images/home/slide-sistecredito.jpeg',
       title: 'Solicita tu cupo en SISTECREDITO: https://www.sistecredito.com/',
       subtitle: 'Te entregamos el dinero en efectivo o transferencia directa.'
     };
-    
+
     this.slides[11] = {
       id: 11,
-      src: 'assets/images/home/AVANCES-SERVIDATA-img10.jpeg',
+      src: 'assets/images/home/slide-aliados.jpeg',
       title: 'Aliados estratégicos',
-      subtitle: 'Conviértete en beneficiario de ADDI, Sistecrédito, vanti y su+ pay con cupos convertidos a efectivo.'
-    };
-
-    this.slides[12] = {
-      id: 12,
-      src: 'assets/images/home/AVANCES-SERVIDATA-img11.jpeg',
-      title: 'Aliados estratégicos',
-      subtitle: 'Conviértete en beneficiario de ADDI, Sistecrédito, vanti y su+ pay con cupos convertidos a efectivo.'
+      subtitle: 'Conviértete en beneficiario de ADDI, Sistecrédito y vanti con cupos convertidos a efectivo.'
     };
 
 

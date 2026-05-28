@@ -181,13 +181,26 @@
   transform: scale(1);
 }
 
-/* Escala individual — Su+ Pay e iconos cuadrados llenan mas */
-.aliado-tile__icon img[alt="Addi"] { transform: scale(1); }
-.aliado-tile__icon img[alt="Sistecrédito"] { transform: scale(1.7); }
-.aliado-tile__icon img[alt="Su+ Pay"] { transform: scale(1.52); }
-.aliado-tile__icon img[alt="Vanti"] { transform: scale(1); }
-.aliado-tile__icon img[alt="DataCrédito"] { transform: scale(1.45); }
-.aliado-tile__icon img[alt="TransUnion (CIFIN)"] { transform: scale(1.05); }
+/* Escala individual — e iconos cuadrados llenan mas */
+.aliado-tile__icon img[alt="Addi"] {
+  transform: scale(1);
+}
+
+.aliado-tile__icon img[alt="Sistecrédito"] {
+  transform: scale(1.7);
+}
+
+.aliado-tile__icon img[alt="Vanti"] {
+  transform: scale(1);
+}
+
+.aliado-tile__icon img[alt="DataCrédito"] {
+  transform: scale(1.45);
+}
+
+.aliado-tile__icon img[alt="TransUnion (CIFIN)"] {
+  transform: scale(1.05);
+}
 
 .aliado-tile:hover .aliado-tile__icon {
   transform: translateY(-3px) scale(1.06);
@@ -233,15 +246,18 @@
   .aliados-domino {
     padding: 3rem 1.5rem 3.5rem;
   }
+
   .aliado-tile {
     padding: 1.75rem 1rem 1.25rem;
     min-height: 220px;
     border-radius: 20px;
   }
+
   .aliado-tile__icon {
     height: 110px;
     margin-bottom: 1rem;
   }
+
   .aliado-tile__label {
     font-size: 0.82rem;
   }
@@ -251,20 +267,24 @@
   .aliados-domino {
     padding: 2.5rem 1rem 3rem;
   }
+
   .aliados-domino__grid {
     grid-template-columns: repeat(3, 1fr);
     gap: 1.25rem;
   }
+
   .aliado-tile {
     padding: 1.5rem 0.85rem 1.1rem;
     min-height: 200px;
     border-radius: 18px;
   }
+
   .aliado-tile__icon {
     height: 95px;
     margin-bottom: 0.85rem;
     padding: 4px 6px;
   }
+
   .aliado-tile__label {
     font-size: 0.78rem;
   }
@@ -274,18 +294,22 @@
   .aliados-domino {
     padding: 2rem 0.85rem 2.5rem;
   }
+
   .aliados-domino__grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
   }
+
   .aliado-tile {
     padding: 1.25rem 0.5rem 0.95rem;
     min-height: 175px;
   }
+
   .aliado-tile__icon {
     height: 85px;
     padding: 4px 6px;
   }
+
   .aliado-tile__label {
     font-size: 0.72rem;
   }
@@ -500,6 +524,7 @@
   .prev-control {
     left: 20px !important;
   }
+
   .next-control {
     right: 20px !important;
   }
@@ -608,8 +633,17 @@
 }
 
 @keyframes premium-pulse {
-  0%, 100% { transform: scale(1); opacity: 1; }
-  50%      { transform: scale(1.4); opacity: 0.6; }
+
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  50% {
+    transform: scale(1.4);
+    opacity: 0.6;
+  }
 }
 
 .premium-title {
@@ -1233,19 +1267,21 @@
   .premium-section {
     padding: 3rem 0;
   }
+
   .cta-banner {
     padding: 2rem 1.25rem;
     border-radius: 22px;
   }
+
   .solution-card__icon-wrap {
     width: 40px;
     height: 40px;
     top: 18px;
     right: 18px;
   }
+
   .nosotros-perk {
     flex-direction: column;
     text-align: center;
   }
 }
-

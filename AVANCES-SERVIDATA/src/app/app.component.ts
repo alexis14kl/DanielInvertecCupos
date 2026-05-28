@@ -12,7 +12,7 @@ import { routes } from './app.routes';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = ' INVERTECCUPOS';
+  title = ' INVERSIONESJOG.CO';
   private viewportScroller = inject(ViewportScroller);
 
   constructor(private router: Router) {
