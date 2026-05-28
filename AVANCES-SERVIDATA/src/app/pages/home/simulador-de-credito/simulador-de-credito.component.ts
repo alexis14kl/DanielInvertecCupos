@@ -49,7 +49,7 @@ export class SimuladorDeCreditoComponent  {
     totalAval: 0,         // aval + IVA (12% * 1.19)
     totalCredito: 0,      // total a pagar
     tablaAmortizacion: [] as any[],
-    tasaInteres: 2.06     // 2.06% mensual
+    tasaInteres: 1.99     // 1.99% mensual
   };
 
   calcularCredito() {
