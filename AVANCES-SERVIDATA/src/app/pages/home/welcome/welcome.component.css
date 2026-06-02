@@ -4,30 +4,33 @@
   }
 }
 
-/* Hero particle network background */
+/* Hero particle network background — responsive con clamp */
 .hero-particles-section {
   position: relative;
   background-color: #0a1840;
-  padding: 2rem 1rem;
+  padding: clamp(1.25rem, 3vw, 3rem) clamp(0.75rem, 2vw, 2rem);
   overflow: hidden;
-  min-height: 32rem;
+  min-height: clamp(26rem, 60vh, 34rem);
 }
 
-@media (min-width: 768px) {
-  .hero-particles-section {
-    padding: 3rem 2rem;
-    min-height: 30rem;
+/* Slide altura responsive */
+.slide-fixed-container {
+  height: clamp(22rem, 50vh, 28rem);
+}
+
+@media (min-width: 1024px) {
+  .slide-fixed-container {
+    height: clamp(20rem, 40vh, 24rem);
   }
 }
 
-/* Slide altura fija — evita layout shift que distorsiona canvas particle */
-.slide-fixed-container {
-  height: 28rem;
-}
-
-@media (min-width: 768px) {
+/* Laptops pequenas (1024-1366) — compactar hero */
+@media (min-width: 1024px) and (max-width: 1366px) {
+  .hero-particles-section {
+    min-height: 26rem;
+  }
   .slide-fixed-container {
-    height: 24rem;
+    height: 20rem;
   }
 }
 
@@ -51,7 +54,7 @@
 .hero-particles-content {
   position: relative;
   z-index: 2;
-  max-width: 1280px;
+  max-width: min(1280px, 95vw);
   margin: 0 auto;
 }
 

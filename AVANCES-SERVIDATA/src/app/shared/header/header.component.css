@@ -720,6 +720,50 @@
 
 
 /* ============================================================
+   Laptops pequenas (1024-1366) — shrink utility-bar + nav
+   ============================================================ */
+
+@media (min-width: 1024px) and (max-width: 1366px) {
+
+    .top-utility-bar {
+        font-size: 11px;
+    }
+
+    .util-link span,
+    .util-wa span {
+        font-size: 11px;
+    }
+
+    .util-divider {
+        height: 12px;
+    }
+
+    .nav-link {
+        font-size: 0.85rem;
+        padding: 0.5rem 0.7rem;
+    }
+
+    .cta-pro {
+        font-size: 0.85rem;
+        padding: 0.6rem 1rem;
+    }
+
+    .brand-name {
+        font-size: 1.05rem;
+    }
+
+    .brand-tag {
+        font-size: 0.65rem;
+    }
+
+    .brand-logo {
+        width: 48px;
+        height: 48px;
+    }
+}
+
+
+/* ============================================================
    Reduced motion
    ============================================================ */
 
