@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, Inject, PLATFORM_ID } from '@angular/core';
 import { HeaderComponent } from '../../../shared/header/header.component';
 import { FooterComponent } from '../../../shared/footer/footer.component';
 import { FormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-simulador-de-credito',
@@ -12,7 +13,68 @@ import { CommonModule } from '@angular/common';
 })
 
 
-export class SimuladorDeCreditoComponent  {
+export class SimuladorDeCreditoComponent implements OnInit {
+
+  shareUrl: string = '';
+  copiado: boolean = false;
+
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    @Inject(PLATFORM_ID) private platformId: Object
+  ) {}
+
+  ngOnInit() {
+    this.route.queryParams.subscribe(params => {
+      const v = parseInt(params['v'], 10);
+      const c = parseInt(params['c'], 10);
+      const p = params['p'];
+      if (v && c) {
+        this.valorSolicitado = v;
+        this.cuotas = c;
+        if (p) this.plazo = p;
+        // Auto-calcular si vino con params
+        setTimeout(() => this.calcularCredito(), 100);
+      }
+    });
+  }
+
+  private actualizarURL() {
+    this.router.navigate([], {
+      relativeTo: this.route,
+      queryParams: {
+        v: this.valorSolicitado,
+        c: this.cuotas,
+        p: this.plazo
+      },
+      queryParamsHandling: 'merge'
+    });
+
+    if (isPlatformBrowser(this.platformId)) {
+      this.shareUrl = `${window.location.origin}${window.location.pathname}?v=${this.valorSolicitado}&c=${this.cuotas}&p=${encodeURIComponent(this.plazo)}`;
+    }
+  }
+
+  copiarURL() {
+    if (!isPlatformBrowser(this.platformId)) return;
+    navigator.clipboard.writeText(this.shareUrl).then(() => {
+      this.copiado = true;
+      setTimeout(() => this.copiado = false, 2500);
+    });
+  }
+
+  compartirWhatsApp() {
+    if (!isPlatformBrowser(this.platformId)) return;
+    const msg = `Mira mi simulacion de credito en INVERSIONESJOG.CO:\n\n` +
+      `Valor solicitado: ${this.formatearNumero(this.valorSolicitado || 0)}\n` +
+      `Cuotas: ${this.cuotas}\n` +
+      `Cuota mensual: ${this.formatearNumero(this.resultado.valorCuota)}\n` +
+      `Cuota inicial: ${this.formatearNumero(this.resultado.cuotaInicial)}\n` +
+      `Total a pagar: ${this.formatearNumero(this.resultado.totalCredito)}\n\n` +
+      `Ver detalle completo: ${this.shareUrl}`;
+    const url = `https://wa.me/?text=${encodeURIComponent(msg)}`;
+    window.open(url, '_blank');
+  }
 
 
   formatearInput(valor: number | any): string {
@@ -72,6 +134,7 @@ export class SimuladorDeCreditoComponent  {
       this.realizarCalculo();
       this.loading = false;
       this.resultadoVisible = true;
+      this.actualizarURL();
     }, 800);
 
     

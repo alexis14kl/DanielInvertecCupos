@@ -144,6 +144,25 @@
               </div>
             </div>
 
+            <!-- Compartir resultado -->
+            <div class="share-block">
+              <p class="share-block__title">
+                <i class="pi pi-share-alt"></i>
+                Comparte este resultado
+              </p>
+              <div class="share-block__url">
+                <input type="text" readonly [value]="shareUrl" class="share-block__input" />
+                <button (click)="copiarURL()" class="share-block__copy" [class.copied]="copiado">
+                  <i class="pi" [ngClass]="copiado ? 'pi-check' : 'pi-copy'"></i>
+                  <span>{{ copiado ? 'Copiado!' : 'Copiar' }}</span>
+                </button>
+              </div>
+              <button (click)="compartirWhatsApp()" class="share-block__wa">
+                <i class="pi pi-whatsapp"></i>
+                <span>Enviar por WhatsApp</span>
+              </button>
+            </div>
+
             <!-- Tabla cuotas mensuales -->
             <div class="amort-table" *ngIf="cuotasPromedioAjustadas.length > 0">
               <div class="amort-table__header">
